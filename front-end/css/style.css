@@ -307,3 +307,32 @@ header.masthead h1 {
 .btn-primary:active, .btn-primary:focus {
     box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;
 }
+
+#contact {
+  background-image: url('../img/background.png');
+}
+
+
+.footer-top {
+  padding: 55px 0;
+}
+
+.site-inner {
+  margin: 100px auto;
+  max-width: 1170px;
+  position: relative;
+}
+
+.widget-area {
+  width: 33.33%;
+  float: left;
+}
+
+.box-footer {
+  margin: 0 15px;
+  border: 1px solid #25201e;
+  padding: 34px 45px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 16px;
+  text-align: center;
+}
