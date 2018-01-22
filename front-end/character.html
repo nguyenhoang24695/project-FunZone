@@ -25,24 +25,27 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            </li>
             <li class="nav-item">
               <a class="nav-link" href="experience.html">Tổng quan</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Chơi gì</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link" id="navbarDropdown1" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Chơi gì</a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                <li><a class="dropdown-item" href="leisure-and-dining.html">Vui chơi</a></li>
+                <li><a class="dropdown-item" href="restaurant.html">Ẩm thực</a></li>
+              </ul>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="character.html">Nhân vật công viên</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Nhân vật công viên</a>
+              <a class="nav-link" href="event.html">Sự kiện</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Sự kiện</a>
+              <a class="nav-link" href="information.html">Thông tin công viên</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Thông tin công viên</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Tuyển dụng</a>
+              <a class="nav-link" href="contact.html">Tuyển dụng</a>
             </li>
           </ul>
         </div>
@@ -56,9 +59,54 @@
 
 
     <!-- Footer -->
-    <footer class="py-5 bg-dark">
+    <footer class="py-2 bg-light">
+
+      <!-- Contact -->
+      <section id="contact">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto text-center text-white">
+              <h2 class="section-heading">Liên hệ</h2>
+            </div>
+          </div>
+
+          <div class="footer-top">
+            <div class="site-inner">
+                <div class="widget-area">
+                  <div class="box-footer text-white">
+                    <i class="fa fa-phone fa-2x mb-3 sr-contact"></i>
+                    <p>Điện thoại</p>
+                    <p>123-456-789</p>
+                  </div>
+                </div>
+
+                <div class="widget-area">
+                  <div class="box-footer text-white">
+                    <i class="fa fa-home fa-2x mb-3 sr-contact"></i>
+                    <p>Địa chỉ</p>
+                    <p>Đại học FPT - Tôn Thất Thuyết</p>
+                  </div>
+                </div>
+
+                <div class="widget-area">
+                  <div class="box-footer text-white">
+                    <i class="fa fa-envelope-o fa-2x mb-3 sr-contact"></i>
+                    <p>Email</p>
+                    <p>
+                      <a href="mailto:your-email@your-domain.com">abc@fpt.edu.vn</a>
+                    </p>
+                  </div>
+                </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    <!-- End contact -->
+
+    <!-- Copyright -->
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Aptech</p>
+        <p class="m-0 text-center text-black">Copyright &copy; Aptech</p>
       </div>
     </footer>
 
