@@ -1,57 +1,137 @@
 <!DOCTYPE html>
 <html>
-  <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
 
-    <title>Fun zone</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="css/style.css" rel="stylesheet">
-  </head>
+  <title>Fun zone</title>
 
-  <body>
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/contact.css" rel="stylesheet">
+</head>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">FUN ZONE</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="experience.html">Tổng quan</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Chơi gì</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Nhân vật công viên</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Sự kiện</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Thông tin công viên</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Tuyển dụng</a>
-            </li>
-          </ul>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">FUN ZONE</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="experience.html">Tổng quan</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Chơi gì</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Nhân vật công viên</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Sự kiện</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Thông tin công viên</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Tuyển dụng</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <section>
+      <div class="container2">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="well well-sm">
+              <form class="type col-md-12">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="name">
+                        Tên</label>
+                      <input type="text" class="form-control" id="name" placeholder="Nhập tên" required="required" />
+                    </div>
+                    <div class="form-group">
+                      <label for="email">
+                        Email</label>
+                      <div class="input-group">
+                        <input type="email" class="form-control" id="email" placeholder="Nhập email" required="required" />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="subject">
+                        Chủ đề</label>
+                      <select id="subject" name="subject" class="form-control" required="required">
+                        <option value="na" selected="">Chọn một:</option>
+                        <option value="service">Dịch vụ khách hàng</option>
+                        <option value="suggestions">Gợi ý</option>
+                        <option value="product">Hỗ trợ</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="name">
+                        Lời nhắn</label>
+                      <textarea name="message" id="message" class="form-control" rows="9" cols="25" required="required" placeholder="Lời nhắn"></textarea>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary pull-right" id="btnContactUs">
+                      Gửi tin nhắn</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="s2 col-md-3">
+            <form>
+              <legend>
+                <span class="fa fa-globe"></span> Văn phòng</legend>
+              <address>
+                <strong>FUNZONE, Inc.</strong>
+                <br>
+                <span class="fa fa-map-marker"></span>&nbsp;Đại Học FPT
+                <br>
+                <span class="fa fa-map-marker"></span>&nbsp;Hà nội , Việt Nam
+                <br>
+                <abbr title="Phone">
+                  <span class="fa fa-phone"></span>&nbsp;</abbr>
+                123-456-789
+              </address>
+              <address>
+                <strong>Email</strong>
+                <br>
+                <span class="fa fa-envelope"></span>&nbsp;
+                <a href="mailto:#">fpt.aptech@gmail.com</a>
+              </address>
+            </form>
+          </div>
         </div>
       </div>
-    </nav>
-
-
-    <section>
-      <!-- Đây là nơi để code -->
+      <div class="container-map">
+        <div class="row-fluid">
+          <div class="span8">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.1186727365266!2d105.78188298381623!3d21.027937099878503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b3aa600d69%3A0x11275455cd98079!2zVMO0biBUaOG6pXQgVGh1eeG6v3QsIEjDoCBO4buZaSwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1512029986933"
+              width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
     </section>
 
 
@@ -65,5 +145,6 @@
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  </body>
+</body>
+
 </html>
