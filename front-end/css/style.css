@@ -505,7 +505,7 @@ img::-moz-selection {
 }
 
 
-@media (max-width: 640px) and (min-width: 360px;) {
+@media (max-width: 767px) and (min-width: 360px;) {
   .footer-top {
     height: 800px;
   }
@@ -539,6 +539,16 @@ img::-moz-selection {
     display: inline-block;
     margin: 0 5px;
   }
+  .footer-top {
+    height: 830px;
+  }
+  .footer-bottom {
+    height: 210px;
+  }
+  .footer-top .widget-area {
+    float: none;
+    width: 100%;
+  }
 }
 
 @media (max-width: 991px) and (min-width: 768px){
@@ -564,6 +574,7 @@ img::-moz-selection {
   }
   .widget-area {
     height: 329px;
+    width: 33.33%;
   }
   .box-footer {
     height: 329px;
@@ -583,6 +594,9 @@ img::-moz-selection {
 @media (max-width: 1200px) and (min-width: 991px){
   .box-footer {
     height: 230px;
+  }
+  .more a {
+    font-size: 15px;
   }
 }
 
