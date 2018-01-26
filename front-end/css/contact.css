@@ -1,5 +1,3 @@
-
-
 iframe {
 	display: block;
 	width: 100%;
@@ -70,4 +68,7 @@ section {
 }
 .send-email {
 	padding-right: 5%;
+}
+*:not(table tr) {
+	display: block;
 }

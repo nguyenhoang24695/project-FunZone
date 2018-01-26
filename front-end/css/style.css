@@ -1,4 +1,4 @@
-* {
+*:not(table tr) {
   display: block;
   box-sizing: border-box;
 }
