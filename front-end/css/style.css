@@ -21,6 +21,13 @@ body {
   -webkit-tap-highlight-color: #212529;
 }
 
+#logo {
+  width: 39px;
+  height: 26px;
+
+}
+
+
 .carousel-item {
   height: 65vh;
   min-height: 300px;
