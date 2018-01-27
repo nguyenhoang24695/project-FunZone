@@ -6,6 +6,7 @@
 body, html {
   width: 100%;
   height: 100%;
+  background-color: rgb(235, 231, 222);
 }
 
 p{
@@ -14,20 +15,18 @@ p{
 #alone{
   font-family: 'Roboto Condensed';
   font-size: 20px;
-  color: #CC2EFA;
+  color: #D358F7;
+}
+
+#logo{
+  width: 39px;
+  height: 26px;
 }
 
 body {
   font-family: 'Roboto Condensed', 'Helvetica Neue', Arial, sans-serif;
   -webkit-tap-highlight-color: #212529;
 }
-
-#logo {
-  width: 39px;
-  height: 26px;
-
-}
-
 
 .carousel-item {
   height: 65vh;
@@ -54,12 +53,15 @@ a {
   -webkit-transition: all 0.2s;
   -moz-transition: all 0.2s;
   transition: all 0.2s;
+  font-family: 'Roboto Condensed' !important;
 }
 
 a:hover {
     color: #f05f40;
 }
-
+span{
+  font-family: 'Roboto Condensed' !important;
+}
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Roboto Condensed', 'Helvetica Neue', Arial, sans-serif;
 }
@@ -276,8 +278,8 @@ img::-moz-selection {
 }
 
 .btn-primary {
-  background-color: #F05F40;
-  border-color: #F05F40;
+  background-color: #f05f40;
+  border-color: #f05f40;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
@@ -289,27 +291,25 @@ img::-moz-selection {
   box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;
 }
 
-#contact {
-  background-image: url('../img/background.png');
-  height: 400px;
+.footer {
+  padding: 20px 45px 0 70px;
 }
 
-.footer-top,{
-  padding: 50px 0;
-  overflow: auto;
-  
+.site-footer {
+  background-image: url('http://banahills.sunworld.vn/wp-content/themes/banahills/images/bg-footer.jpg');
+  background-size: cover;
+  margin-bottom: -25px;
 }
-.footer-top p {
-  color: white !important;
-}
-#content {
-  background-color: #ebe7de;
-  padding-bottom: 30px;
+
+.footer-top {
+  padding: 55px 0;
+  height: 362px;
 }
 
 .site-inner {
   margin: 0 auto;
-  max-width: 90%;
+  max-width: 85%;
+  position: relative;
 }
 
 .widget-area {
@@ -317,34 +317,206 @@ img::-moz-selection {
   float: left;
 }
 
-.widget-area:before {
-  display: table;
+.container::before, .widget-area::before,
+.textwidget::before, .textwidget::after
+.clearfix::after, .clearfix::before {
   clear: both;
   content: "";
+  display: table;
+}
+
+.widget-area {
+  width: 33.33%;
+  float: left;
+}
+
+.box-footer {
+  background-color: rgba(0, 0, 0, 0);
+  background-image: url('http://banahills.sunworld.vn/wp-content/themes/banahills/images/box-footer.png');
+  border: 1px solid rgb(37, 32, 30);
+  color: rgba(255, 255, 255, 0.5);
+  display: block;
+  height: 252px;
+  line-height: 24px;
+  margin: 0 15px 0 15px;
+  text-align: center;
+  margin: 0 15px;
+  border: 1px solid #25201e;
+  padding: 34px 45px;
+  font-size: 15.5px;
+  width: 95%;
+}
+
+.widget-text {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 16px;
+  text-align: center;
+  padding: 0;
+}
+
+.widget-title {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 42px;
+  line-height: 31.5px;
+  letter-spacing: 1.125px;
+}
+
+.textwidget {
+  font-weight: 400;
+  height: 108px;
+}
+
+.more a {
+  font-size: 17px;
+  font-weight: 700;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.5);
+  box-shadow: none;
+  text-transform: uppercase;
+  border: 1px solid #a5a5a5;
+  line-height: 40px;
+  display: inline-block;
+  padding: 0 20px;
+  -webkit-transition: all .2s ease-out;
+  transition: all .2s ease-out;
+}
+
+.menu-menu-social-container {
+  width: 100%;
+  display: block;
+}
+
+#menu-menu-social{
+  display: inline-block;
+  list-style-type: disc;
+  list-style-position: outside;
+  margin-top: 7px;
+  width: 230px;
+  height: 37px;
+  padding: 0;
+}
+
+.menu-menu-social-container ul {
+  display: inline-block;
+  margin: 7px 0 0;
+}
+
+.menu-menu-social-container li {
+  float: left;
+  list-style-type: none;
+  margin: 0 1px;
+  width: 44px;
+  height: 37px;
+}
+
+.menu-menu-social-container li a {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.5);
+  /*background: url(images/bg-social.png) repeat 0 0;*/
+  width: 44px;
+  height: 37px;
+  line-height: 37px;
+  display: block;
+  border-radius: 3px;
+  -webkit-transition: all 0.2s ease-out 0s;
+  transition: all 0.2s ease-out 0s;
+}
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.menu-menu-social-container li.facebook a:hover {
+  background: #365994;
+  color: #fff;
+}
+
+.menu-menu-social-container li.youtube a:hover {
+  background: #b44639;
+  color: #fff;
+}
+
+.menu-menu-social-container li.instagram a:hover {
+  background: #7b6656;
+  color: #fff;
+}
+
+.menu-menu-social-container li.twitter a:hover {
+  background: #399ccd;
+  color: #fff;
+}
+
+.menu-menu-social-container li.github a:hover {
+  background: black;
+  color: #fff;
+}
+
+.footer-bottom {
+  background-image: url(http://banahills.sunworld.vn/wp-content/themes/banahills/images/footer-b.png);
+  width: 100%;
+  height: 272.667px;
+}
+
+.footer-bottom .footer {
+  border-top: 1px solid #867d79;
+}
+
+.footer-center .site-inner {
+  border: 0 !important;
+}
+
+.footer-center .widget img {
+  display: inline;
+  margin: 10px;
+  vertical-align: center;
+}
+
+.site-info {
+  float: left;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.footer-menu ul {
+  margin: 0;
+}
+
+.footer-menu li {
+  float: left;
+  list-style: none;
+  margin: 0 25px;
+}
+
+.footer-menu li a {
+  color: #857e7a;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.footer-links-menu {
+  padding: 10px;
 }
 
 .space {
   padding-top: 20px;
 }
 
-.box-footer {
-  margin: 0 15px;
-  border: 1px solid #25201e;
-  padding: 34px 45px;
-  color: rgba(0, 0, 0, 0.5);
-  font-size: 15.5px;
-  text-align: center;
-}
-
 #top-image {
-  height: 230px;
+  height: 650px;
   background-position: center;
   background-size: cover;
 }
 
 .page-header {
   font-weight: bold;
-  width: 100%;
+  max-width: 100%;
   height: 93px;
   line-height: 24px;
   background-color: #ebe7de;
@@ -354,39 +526,101 @@ img::-moz-selection {
   transform: matrix(1, 0, 0, 1, 0, -93.06);
 }
 
-@media (min-width: 360px;) {
+
+@media (max-width: 767px) and (min-width: 360px;) {
+  .footer-top {
+    height: 800px;
+  }
+  .box-footer {
+    margin: 0;
+  }
   .widget-area {
-      width: 100%;
-    }
-    .box-footer {
-      widows: 30%;
-    }
-    #contact {
-      height: 850px;
-    }
+    width: 100%;
+    height: 
+  }
+  .footer-bottom {
+    height: 140px;
+  }
 }
 
-@media (max-width: 760px) {
-    .widget-area {
-      width: 100%;
-    }
-    .box-footer {
-      widows: 30%;
-    }
-    #contact {
-      height: 850px;
-    }
+@media (max-width: 767px){
+  .footer, .footer-center {
+    padding: 20px 15px 0 15px;
+  }
+  .footer-menu {
+    float: none;
+    text-align: center;
+  }
+  .site-info {
+    float: none;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .footer-menu li {
+    float: none;
+    display: inline-block;
+    margin: 0 5px;
+  }
+  .footer-top {
+    height: 830px;
+  }
+  .footer-bottom {
+    height: 210px;
+  }
+  .footer-top .widget-area {
+    float: none;
+    width: 100%;
+  }
 }
 
-@media (min-width: 760) {
-    .box-footer {
-      height: 230px;
-      }}
+@media (max-width: 991px) and (min-width: 768px){
+  .footer-top {
+    height: 439px;
+  }
+  .footer-top .container {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .footer-top .box-footer {
+    padding: 34px;
+  }
+  .footer {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .footer-menu li {
+    margin: 0 0 0 20px;
+  }
+  .footer-menu li {
+    margin: 0 0 0 20px;
+  }
+  .widget-area {
+    height: 329px;
+    width: 33.33%;
+  }
+  .box-footer {
+    height: 329px;
+  }
+  .widget-text {
+    height: 161px;
+  }
+  .menu-menu-social {
+    height: 74px;
+  }
+  .menu-menu-social-container li {
+    width: 25px;
+    height: auto;
+  }
+}
 
-@media (max-width: 1200px){
-    .box-footer {
-      height: 230px;
-      }}
+@media (max-width: 1200px) and (min-width: 991px){
+  .box-footer {
+    height: 230px;
+  }
+  .more a {
+    font-size: 15px;
+  }
+}
 
 .aligncenter {
   clear: both;
