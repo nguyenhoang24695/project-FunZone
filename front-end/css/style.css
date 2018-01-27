@@ -47,12 +47,15 @@ a {
   -webkit-transition: all 0.2s;
   -moz-transition: all 0.2s;
   transition: all 0.2s;
+  font-family: 'Roboto Condensed' !important;
 }
 
 a:hover {
     color: #f05f40;
 }
-
+span{
+  font-family: 'Roboto Condensed' !important;
+}
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Roboto Condensed', 'Helvetica Neue', Arial, sans-serif;
 }
@@ -299,8 +302,13 @@ img::-moz-selection {
 
 .site-inner {
   margin: 0 auto;
-  max-width: 95%;
+  max-width: 85%;
   position: relative;
+}
+
+.widget-area {
+  width: 33.33%;
+  float: left;
 }
 
 .container::before, .widget-area::before,
@@ -495,14 +503,14 @@ img::-moz-selection {
 }
 
 #top-image {
-  height: 230px;
+  height: 650px;
   background-position: center;
   background-size: cover;
 }
 
 .page-header {
   font-weight: bold;
-  width: 100%;
+  max-width: 100%;
   height: 93px;
   line-height: 24px;
   background-color: #ebe7de;
