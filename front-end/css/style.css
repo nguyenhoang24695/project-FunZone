@@ -299,8 +299,13 @@ img::-moz-selection {
 
 .site-inner {
   margin: 0 auto;
-  max-width: 95%;
+  max-width: 85%;
   position: relative;
+}
+
+.widget-area {
+  width: 33.33%;
+  float: left;
 }
 
 .container::before, .widget-area::before,
@@ -495,14 +500,14 @@ img::-moz-selection {
 }
 
 #top-image {
-  height: 230px;
+  height: 650px;
   background-position: center;
   background-size: cover;
 }
 
 .page-header {
   font-weight: bold;
-  width: 100%;
+  max-width: 100%;
   height: 93px;
   line-height: 24px;
   background-color: #ebe7de;
