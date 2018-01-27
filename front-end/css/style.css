@@ -1,6 +1,7 @@
 * {
   display: block;
   box-sizing: border-box;
+  font-family: 'Roboto Condensed' !important;
 }
 
 body, html {
