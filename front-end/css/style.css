@@ -1,7 +1,6 @@
 * {
   display: block;
   box-sizing: border-box;
-  font-family: 'Roboto Condensed' !important;
 }
 
 body, html {
@@ -48,12 +47,15 @@ a {
   -webkit-transition: all 0.2s;
   -moz-transition: all 0.2s;
   transition: all 0.2s;
+  font-family: 'Roboto Condensed' !important;
 }
 
 a:hover {
     color: #f05f40;
 }
-
+span{
+  font-family: 'Roboto Condensed' !important;
+}
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Roboto Condensed', 'Helvetica Neue', Arial, sans-serif;
 }
