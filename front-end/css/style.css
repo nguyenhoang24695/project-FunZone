@@ -15,6 +15,12 @@ p{
 #alone{
   font-family: 'Roboto Condensed';
   font-size: 20px;
+  color: #D358F7;
+}
+
+#logo{
+  width: 39px;
+  height: 26px;
 }
 
 body {
