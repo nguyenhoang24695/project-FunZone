@@ -1,5 +1,5 @@
 * {
-  	font-family: 'Roboto Condensed';
+  	font-family: 'Roboto Condensed', 'Helvetica Neue', Arial, sans-serif!important;
  }
 
 .product-banner {
@@ -27,11 +27,12 @@ div.img-bg, .img-bg-full {
     bottom: 0;
     right: 30px;
     opacity: 0.5;
-    color: white;
+    color: #fff;
 }
 
 .product-wrap {
     background: #FFF;
+    padding-top: 10px;
 }
 
 .row {
@@ -82,7 +83,6 @@ div.img-bg, .img-bg-full {
 	}
 }
 
-
 #booking-bar {
     padding-top: 20px;
     width: 360px;
@@ -131,4 +131,5 @@ div.img-bg, .img-bg-full {
 
 #booking-bar .btn {
     border: 1px solid #e1e1e1;
+    cursor: pointer;
 }
