@@ -1,18 +1,18 @@
-// var customerController = require('../controllers/customerController');
+var customerController = require('../controllers/customerController');
 // var adminController = require('../controllers/adminController');
 var productController = require('../controllers/productController');
 var cartController = require('../controllers/cartController');
 
 module.exports = function(app){
 	// customer api.
-	// app.route('/_api/v1/customers')
-	// 	.get(customerController.getList)
-	// 	.post(customerController.add);	
+	app.route('/_api/v1/customers')
+		.get(customerController.getList)
+		.post(customerController.add);	
 
-	// app.route('/_api/v1/customers/:id')
-	// 	.get(customerController.getDetail)
-	// 	.put(customerController.update)
-	// 	.delete(customerController.delete);
+	app.route('/_api/v1/customers/:id')
+		.get(customerController.getDetail)
+		.put(customerController.update)
+		.delete(customerController.delete);
 
 	// admin api.
 	// app.route('/_api/v1/admins')

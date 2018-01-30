@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 module.exports = mongoose.model('products', {
 	pId: Schema.Types.ObjectId,
@@ -29,6 +30,6 @@ module.exports = mongoose.model('products', {
 	},
 	status: {
 		type: Number,
-		default: 1
+		default: 0
 	}
 });
