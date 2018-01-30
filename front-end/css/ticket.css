@@ -189,6 +189,19 @@ input:active {
         width: 100%;
     }
     .table ul li {
-        height: 60px;
+        height: 110px;
     }
+}
+
+.input-group-btn {
+    width: 35px;
+    padding: 0;
+    margin: 0;
+}
+
+.table .shortpro input, .table .shortpro span, button {
+    float: left;
+    height: 30px;
+    width: auto;
+    text-align: center;
 }
