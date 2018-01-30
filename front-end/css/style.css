@@ -17,6 +17,11 @@ p{
   font-size: 20px;
 }
 
+#logo{
+  width: 39px;
+  height: 26px;
+}
+
 body {
   font-family: 'Roboto Condensed', 'Helvetica Neue', Arial, sans-serif;
   -webkit-tap-highlight-color: #212529;
