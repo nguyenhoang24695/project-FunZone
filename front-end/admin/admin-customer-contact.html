@@ -73,37 +73,55 @@
         <li class="header">MAIN NAVIGATION</li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-user"></i> <span>Quản Lý Sản Phẩm</span>
+            <i class="fa fa-user"></i>
+            <span>Quản Lý Sản Phẩm</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="list-student.html"><i class="fa fa-circle-o"></i>Danh sách sản phẩm</a></li>
-            <li><a href="student-form.html"><i class="fa fa-circle-o"></i>Thêm sản phẩm</a></li>
+            <li>
+              <a href="admin-list-product.html">
+                <i class="fa fa-circle-o"></i>Danh sách sản phẩm</a>
+            </li>
+            <li>
+              <a href="admin-add-product.html">
+                <i class="fa fa-circle-o"></i>Thêm sản phẩm</a>
+            </li>
           </ul>
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-user"></i> <span>Quản Lí Khách Hàng</span>
+            <i class="fa fa-user"></i>
+            <span>Quản Lí Khách Hàng</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="list-student.html"><i class="fa fa-circle-o"></i>Danh sách khách hàng</a></li>
-            <li><a href="student-form.html"><i class="fa fa-circle-o"></i> Thêm thông tin khách hàng</a></li>
+            <li>
+              <a href="admin-customer-contact.html">
+                <i class="fa fa-circle-o"></i>Danh sách khách hàng liên hệ</a>
+            </li>
+            <li>
+              <a href="admin-customer-product.html">
+                <i class="fa fa-circle-o"></i>Danh sách khách hàng đặt order</a>
+            </li>
           </ul>
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-user"></i> <span>Quản Lí Order</span>
+            <i class="fa fa-user"></i>
+            <span>Quản Lí Order</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="list-student.html"><i class="fa fa-circle-o"></i>Danh sách Order</a></li>
+            <li>
+              <a href="admin-order.html">
+                <i class="fa fa-circle-o"></i>Danh sách Order</a>
+            </li>
           </ul>
         </li>
       </ul>
@@ -128,65 +146,48 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="row">          
-        <div class="col-md-12">
-          <!-- general form elements -->
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Add New Admin By Hung</h3>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Danh Sách Sản Phẩm</h3>
             </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form role="form" name="student-form">
-              <div class="box-body">
-                <div class="form-group">
-                  <label>Rollnumber</label>
-                  <input type="text" class="form-control" placeholder="Enter rollnumber" name="rollNumber">
+            <!-- /.box-header -->          
+            <div class="box-body">
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>Email</th>                
+                  <th>ID Khách hàng</th>
+                  <th>Tên khách hàng</th>
+                  <th>Phone</th>
+                  <th>Tiêu đề</th>
+                  <th>Nội dung liên hệ</th>
+                  <th></th>
+                </tr>
+                </thead>
+                <tbody id="result">                              
+                </tbody>                
+              </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">                
+                <div class="col-md-6 col-md-offset-6">
+                    <nav aria-label="Page navigation">
+                      <ul class="pagination">                        
+                      </ul>
+                    </nav>
                 </div>
-                <div class="form-group">
-                  <label>First Name</label>
-                  <input type="text" class="form-control" placeholder="Enter first name" name="firstName">
-                </div>
-                <div class="form-group">
-                  <label>Last Name</label>
-                  <input type="text" class="form-control" placeholder="Enter last name" name="lastName">
-                </div>
-                <div class="form-group">
-                  <label>Gender</label>
-                  <div class="radio">
-                    <label>
-                      <input type="radio" name="gender" value="1" checked>
-                      Male
-                    </label>
-                    <label>
-                      <input type="radio" name="gender" value="0">
-                      Female
-                    </label>
-                  </div>                  
-                </div>
-                <div class="form-group">
-                  <label>Birthday</label>  
-                  <input type="date" class="form-control" name="birthday">                
-                </div>                
-                <div class="form-group">
-                  <label>File input</label>
-                  <input type="file" id="fileUpload">
-                  <img id="preview" style="max-width: 200px; padding: 5px;">
-                  <input type="hidden" name="avatarUrl">
-                </div>                
-              </div>
-              <!-- /.box-body -->
-              <div class="box-footer">
-                <button type="button" class="btn btn-primary" name="btn-submit">Submit</button>
-              </div>
-            </form>
+                
+            </div>
+            
           </div>
-          <!-- /.box -->                 
-     
+          <!-- /.box -->        
         </div>
-
+        <!-- /.col -->
       </div>
       <!-- /.row -->
+
     </section>
     <!-- /.content -->
   </div>
