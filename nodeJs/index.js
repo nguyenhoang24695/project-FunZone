@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var mongooseTransactions = require('mongoose-transactions');
 var cors = require('cors');
 var app = express();
 
@@ -12,14 +13,10 @@ app.use(bodyParser.json());
 mongoose.connect('mongodb://localhost/project_fun_zone');
 mongoose.Promise = global.Promise;
 
-// Các route: Member, Shop, Product
-// var memberRoute = require('./routes/memberRoute');
-// var shopRoute = require('./routes/shopRoute');
-// var productRoute = require('./routes/productRoute');
+var applicationRoutes = require('./routes/applicationRoutes');
 
-// memberRoute(app);
-// shopRoute(app);
-// productRoute(app);
+applicationRoutes(app);
+
 
 app.listen(3000, function(){
 	console.log('I am running at port 3000!');
