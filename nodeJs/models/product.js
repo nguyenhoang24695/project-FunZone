@@ -2,7 +2,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 module.exports = mongoose.model('products', {
-	pId: String,
+	pId: {
+		type: String,
+		unique: true
+	},
 	pName: {
 		type: String,
 		required: true
@@ -17,6 +20,10 @@ module.exports = mongoose.model('products', {
 	},
 	pCategory: {
 		type: String,
+		required: true
+	},
+	pPrice: {
+		type: Number,
 		required: true
 	},
 	pType: Boolean, //true với người lớn, false với trẻ em
