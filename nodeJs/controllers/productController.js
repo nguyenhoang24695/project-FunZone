@@ -31,6 +31,7 @@ exports.add = function(req, resp){
 
 exports.update = function(req, resp){
 	Model.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, result) {
+		result.updatedAt = Date.now();
 	    resp.json(result);
 	});
 }
@@ -39,6 +40,7 @@ exports.delete = function(req, resp){
 	Model.findById(req.params.id,function(err, result){				
 		result.status = 0;
 		Model.findOneAndUpdate({_id: req.params.id}, result, {new: true}, function(err, result) {
+		    result.updatedAt = Date.now();
 		    resp.json(result);
 		});
 	});	

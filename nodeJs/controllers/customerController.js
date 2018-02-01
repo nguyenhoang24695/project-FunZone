@@ -32,6 +32,7 @@ exports.add = function(req, resp){
 
 exports.update = function(req, resp){
 	Customer.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, result) {
+	    result.updatedAt = Date.now();
 	    resp.json(result);
 	});
 }
@@ -45,6 +46,7 @@ exports.delete = function(req, resp){
 	Customer.findById(req.params.id,function(err, result){				
 		result.status = 0;
 		Customer.findOneAndUpdate({_id: req.params.id}, result, {new: true}, function(err, result) {
+		    result.updatedAt = Date.now();
 		    resp.json(result);
 		});
 	});	
