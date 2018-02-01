@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-module.exports = mongoose.model('products', {
+module.exports = mongoose.model('customers', {
 	cId: Schema.Types.ObjectId,
 	cName: {
 		type: String,

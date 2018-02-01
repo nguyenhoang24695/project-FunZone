@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 module.exports = mongoose.model('products', {
-	pId: Schema.Types.ObjectId,
+	pId: String,
 	pName: {
 		type: String,
 		required: true

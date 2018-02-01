@@ -13,9 +13,9 @@ app.use(bodyParser.json());
 mongoose.connect('mongodb://localhost/project_fun_zone');
 mongoose.Promise = global.Promise;
 
-var applicationRoute = require('./routes/applicationRoute');
+var applicationRoutes = require('./routes/applicationRoutes');
 
-applicationRoute(app);
+applicationRoutes(app);
 
 
 app.listen(3000, function(){

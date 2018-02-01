@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Product = require('../models/product');
 var Order = require('../models/order');
-var OrderDetail = require('../models/order_detail');
+var OrderDetail = require('../models/orderDetail');
 const Transaction = require('mongoose-transactions'); // phải chạy 
 // lệnh npm install mongoose-transactions --save
 
