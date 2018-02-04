@@ -15,7 +15,7 @@ p{
 #alone{
   font-family: 'Roboto Condensed';
   font-size: 20px;
-  color: #D358F7;
+  color: #212529;
 }
 
 #logo{
@@ -197,6 +197,7 @@ img::-moz-selection {
     #mainNav.navbar-shrink .navbar-nav > li.nav-item > a.nav-link:focus:hover {
             color: #F05F40;
     }
+
 }
 
 .service-box {
@@ -647,3 +648,18 @@ img {
 .buy-ticket-title img {
   display: none;
 }
+@media (max-width: 991px) and (min-width: 768px){ 
+  .buy-ticket {
+    width: 15%;
+  }
+ }
+ @media (max-width: 768px) and (min-width: 360px){ 
+  .buy-ticket {
+    width: 20%;
+  }
+ }
+ @media (max-width:360px){ 
+  .buy-ticket {
+    width: 20%;
+  }
+ }
