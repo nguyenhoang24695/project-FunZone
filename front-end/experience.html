@@ -27,7 +27,7 @@
           <ul class="navbar-nav ml-auto">
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="experience.html">Tổng quan</a>
+              <a class="nav-link active" href="experience.html">Tổng quan</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link" id="navbarDropdown1" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Chơi gì</a>
@@ -36,7 +36,7 @@
                 <li><a class="dropdown-item" href="restaurant.html">Ẩm thực</a></li>
               </ul>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="character.html">Nhân vật công viên</a>
             </li>
             <li class="nav-item">
@@ -194,17 +194,7 @@
     </div>
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script>
-      $(document).ready(function () {
-        $('.buy-ticket').hover(function () {
-          $('.buy-ticket-title .img2').show();
-          $('.buy-ticket .img1').hide();
-        });
-        $('.buy-ticket').mouseleave(function () {
-          $('.buy-ticket-title .img2').hide();
-          $('.buy-ticket .img1').show();
-        });
-      });
+    <script src="js/buyticket.js">
     </script>
 
   </body>
