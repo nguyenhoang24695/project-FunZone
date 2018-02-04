@@ -21,25 +21,20 @@
     <div class="container">
       <img src="img/logo.png" id="logo">
       <a class="navbar-brand" href="index.html">FUN ZONE</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
-        aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="experience.html">Tổng quan</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link" id="navbarDropdown1" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">Chơi gì</a>
+            <a class="nav-link" id="navbarDropdown1" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Chơi gì</a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
-              <li>
-                <a class="dropdown-item" href="leisure-and-dining.html">Vui chơi</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="restaurant.html">Ẩm thực</a>
-              </li>
+              <li><a class="dropdown-item" href="leisure-and-dining.html">Vui chơi</a></li>
+              <li><a class="dropdown-item" href="restaurant.html">Ẩm thực</a></li>
             </ul>
           </li>
           <li class="nav-item">
@@ -52,7 +47,10 @@
             <a class="nav-link" href="information.html">Thông tin công viên</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contact.html">Tuyển dụng</a>
+            <a class="nav-link active" href="contact.html">Liên hệ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html"><span style="font-size:20px;" class="fa fa-shopping-cart"></span></a>
           </li>
         </ul>
       </div>
@@ -283,10 +281,19 @@
       </nav>
     </div>
   </footer>
-
+  <div class="buy-ticket text-center">
+    <a href="ticket.html">
+      <img class="img1" src="img/book-tickets-icon.png">
+      <div class="buy-ticket-title text-center">
+        <img src="img/book-ticket.png" class="img2" alt="">
+      </div>
+    </a>
+  </div>
 
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/buyticket.js">
+  </script>
   <script>
     $(document).ready(function (e) {
       $('.send').click(function (e) {
@@ -320,6 +327,7 @@
         };
       });
     });
+  
   </script>
 </body>
 

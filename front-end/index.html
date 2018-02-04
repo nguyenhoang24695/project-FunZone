@@ -20,6 +20,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
     <div class="container">
+      <img src="img/logo.png" id="logo">
       <a class="navbar-brand" href="index.html">FUN ZONE</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
         aria-expanded="false" aria-label="Toggle navigation">
@@ -27,6 +28,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="experience.html">Tổng quan</a>
           </li>
@@ -52,13 +54,17 @@
             <a class="nav-link" href="information.html">Thông tin công viên</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contact.html">Tuyển dụng</a>
+            <a class="nav-link" href="contact.html">Liên hệ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html">
+              <span style="font-size:20px;" class="fa fa-shopping-cart"></span>
+            </a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-  
 
   <!-- Carousel -->
   <header>
@@ -104,7 +110,7 @@
       </a>
     </div>
   </header>
-  
+
 
   <!-- Page Content -->
   <section class="bg-light" id="about">
@@ -353,27 +359,17 @@
     </div>
   </footer>
   <div class="buy-ticket text-center">
-      <a href="ticket.html">
-        <img class="img1" src="img/book-tickets-icon.png">
-        <div class="buy-ticket-title text-center">
-          <img src="img/book-ticket.png" class="img2" alt="">
-        </div>
-      </a>
-    </div>
+    <a href="ticket.html">
+      <img class="img1" src="img/book-tickets-icon.png">
+      <div class="buy-ticket-title text-center">
+        <img src="img/book-ticket.png" class="img2" alt="">
+      </div>
+    </a>
+  </div>
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script>
-      $(document).ready(function(){
-        $('.buy-ticket').hover(function(){
-          $('.buy-ticket-title .img2').show();
-          $('.buy-ticket .img1').hide();
-        });
-        $('.buy-ticket').mouseleave(function(){
-          $('.buy-ticket-title .img2').hide();
-          $('.buy-ticket .img1').show();
-        });
-      });
-    </script>
+  <script src="js/buyticket.js">
+  </script>
 </body>
 
 </html>
