@@ -1,73 +1,76 @@
-var TICKET_API = "http://localhost:3000/_api/v1/products";
+var TICKET_API = "http://localhost:3000/_api/v1/products/5a72ff9895e0cd25cc4df245";
 
 $(document).ready(function(){
-	loadTicket(id);
+  loadTicket();
 });
 
-function loadTicket(id) {
-	$.ajax({
-		url: TICKET_API + '/' + id,
-		type: 'GET',
-		success: function(response) {
-			var ticket = JSON.parse(this.response);
-				  
-  				htmlContent += '<div class="col-lg-8">'
-  				htmlContent += '<div id="prodInfo">'
-  				htmlContent += '<h2>' + ticket.pName + '</h2>'
-  				htmlContent += '<div class="critical-info">'
-				  htmlContent += '<i class="fa fa-bookmark-o" aria-hidden="true"></i>'
-				  htmlContent += '&nbsp; Mã dịch vụ: '+ ticket.pId
-  				htmlContent += '</div>'
-  				htmlContent += '<div class="prod-intro">'
-  				htmlContent += '<i class="fa fa-book" aria-hidden="true"></i>'
-				  htmlContent += '&nbsp;' + ticket.pDescription + '</div>'
-  				htmlContent += '</div>'
-  				htmlContent += '</div>'
+function loadTicket() {
+  $.ajax({
+    // url: TICKET_API + '/' + id,
+    url: TICKET_API,
+    type: 'GET',
+    success: function(response) {
+      console.log(response);
+      var ticket = response;
+      var htmlContent = '';
 
-  				htmlContent += '<div class="col-lg-4">'
-  				htmlContent += '<div id="booking-bar" class="vue-affix affix">'
-  				htmlContent += '<div class="booking-bar-content">'
-  				htmlContent += '<div class="price">'
-  				htmlContent += '<h5 class="pull-left">Giá từ</h5>'
-  				htmlContent += '<div class="pull-right">'
-  				htmlContent += '<div class="product-pricing">'
-  				htmlContent += '<h4>VND </h4>'
-  				htmlContent += '<h2 class="text-primary">' + ticket.pPrice + '</h2>'
-  				htmlContent += '</div>'
-  				htmlContent += '</div>'
-  				htmlContent += '<div class="clearfix"></div>'
-  				htmlContent += '<div class="space"></div>'
-          htmlContent += '<div class="btn btn-info btn-block btn-lg">'
-          htmlContent += '<span>'
-          htmlContent += '<i class="fa fa-ticket" aria-hidden="true"></i>&nbsp;Đặt vé'
-          htmlContent += '</span>'
-          htmlContent += '</div>'
-  				htmlContent += '</div>'
-  				htmlContent += '<div class="space"></div>'
-          htmlContent += '<div class="btn btn-outline-secondary btn-lg btn-block">'
-          htmlContent += '<span>'
-          htmlContent += '<i class="fa fa-heart" aria-hidden="true"></i>&nbsp;Thêm vé'
-          htmlContent += '</span>'
-          htmlContent += '</div>'
-  				htmlContent += '</div>'
-  				htmlContent += '</div>'
-  				htmlContent += '</div>'
-      $('.img-bg-full').css("background-image", url(pImage));
-			$('#result').html(htmlContent);
-		},
-		error: function(response){
-			alert('Đã xảy ra lỗi.');
+          htmlContent += '<div class="col-lg-8">';
+          htmlContent += '<div id="prodInfo">';
+          htmlContent += '<h2 class="product-name">' + ticket.pName + '</h2>';
+          htmlContent += '<div class="critical-info">';
+          htmlContent += '<i class="fa fa-bookmark-o" aria-hidden="true"></i>';
+          htmlContent += '&nbsp; Mã dịch vụ: '+ ticket.pId;
+          htmlContent += '</div>';
+          htmlContent += '<div class="prod-intro">';
+          htmlContent += '<i class="fa fa-book" aria-hidden="true"></i>';
+          htmlContent += '&nbsp;' + ticket.pDescription + '</div>';
+          htmlContent += '</div>';
+          htmlContent += '</div>';
+
+          htmlContent += '<div class="col-lg-4">';
+          htmlContent += '<div id="booking-bar" class="vue-affix affix">';
+          htmlContent += '<div class="booking-bar-content">';
+          htmlContent += '<div class="price">';
+          htmlContent += '<h5 class="pull-left">Giá từ</h5>';
+          htmlContent += '<div class="pull-right">';
+          htmlContent += '<div class="product-pricing">';
+          htmlContent += '<h4>VND </h4>';
+          htmlContent += '<h2 class="text-primary product-price">' + ticket.pPrice + '</h2>';
+          htmlContent += '</div>';
+          htmlContent += '</div>';
+          htmlContent += '<div class="clearfix"></div>';
+          htmlContent += '<div class="space"></div>';
+          htmlContent += '<div class="btn btn-info btn-block btn-lg">';
+          htmlContent += '<span>';
+          htmlContent += '<i class="fa fa-ticket" aria-hidden="true"></i>&nbsp;Đặt vé';
+          htmlContent += '</span>';
+          htmlContent += '</div>';
+          htmlContent += '</div>';
+          htmlContent += '<div class="space"></div>';
+          htmlContent += '<div class="btn btn-outline-secondary btn-lg btn-block">';
+          htmlContent += '<span>';
+          htmlContent += '<i class="fa fa-heart" aria-hidden="true"></i>&nbsp;Thêm vé';
+          htmlContent += '</span>';
+          htmlContent += '</div>';
+          htmlContent += '</div>';
+          htmlContent += '</div>';
+          htmlContent += '</div>';
+
+      $('.img-bg-full').css("background-image", 'url(' + ticket.pImage + ')');
+      $('#result').html(htmlContent);
+    },
+    error: function(response){
+      alert('Đã xảy ra lỗi. Vui lòng thử lại.');
       window.location.href = "ticketlist.html";  
-		}, 
-	});
+    }
+  });
 };
 
 $('#result').on('click', '.btn', function() {
       // Lấy ra mã sản phẩm từ link.
       var productId = $(this).children('.col-lg-8').children().children('.critical-info').text();
-      var productName = $(this).children('.col-lg-8').children('h2').text();
-      var productPrice = $(this).children('.col-lg-4').children().children().children().children().chill
-      ().children('.text-primary').text();
+      var productName = $(this).children('.col-lg-8').children('.pruduct-name').text();
+      var productPrice = $(this).children('.col-lg-4').children().children().children().children('.pull-right').children().children('.prudct-price').text();
       
 
       if($(this).children().attr('class').indexOf('fa-plus') >= 0){       
@@ -138,4 +141,14 @@ function addToCart(productId, productName, productPrice, quantity){
   alert('Thêm ' + productName + ' thành công. Số lượng ' + quantity);
   // Lưu lại thông tin giỏ hàng vào localStorage.
   localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+function getParameterByName(name) {
+    var url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
