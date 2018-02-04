@@ -166,7 +166,7 @@
               </div>
               <!-- /.box-header -->
               <!-- form start -->
-              <form role="form" name="student-form">
+              <form role="form" name="admin-add-product-form">
                 <div class="box-body">
                   <div class="form-group">
                     <label>Tên Sản Phẩm</label>
@@ -198,23 +198,34 @@
                     <label>Loại</label>
                     <div class="radio">
                       <label>
-                        <input type="radio" name="pType" value="1" checked> Người lớn
+                        <input type="radio" name="pType" value="true" checked> Người lớn
                       </label>
                       <label>
-                        <input type="radio" name="pType" value="0"> Trẻ em
+                        <input type="radio" name="pType" value="false"> Trẻ em
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Tình trạng sản phẩm</label>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="status" value="true"> Đang bán
+                      </label>
+                      <label>
+                        <input type="radio" name="status" value="false" checked> Chưa bán
                       </label>
                     </div>
                   </div>
                   <div class="form-group">
                     <label>Ảnh Sản Phẩm</label>
-                    <input type="file" id="pImage">
-                    <img id="preview" style="max-width: 200px; padding: 5px;">
+                    <input type="file" id="pImage" onchange="readURL(this);">
+                    <img id="preview" src="#" style="max-width: 200px; padding: 5px;">
                     <input type="hidden" name="avatarUrl">
                   </div>
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
-                  <button type="button" class="btn btn-primary" name="btn-submit">Submit</button>
+                  <button type="button" class="btn btn-primary" name="btn-submit" id="btn-submit">Submit</button>
                 </div>
               </form>
             </div>
@@ -239,7 +250,7 @@
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
           <div class="modal-body">
-            <h4 class="modal-title">Action Success</h4>
+            <h4 class="modal-title">Thêm sản phẩm thành công!</h4>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Ok</button>
@@ -262,7 +273,7 @@
   <script src="js/adminlte.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="js/demo.js"></script>
-  <script src="js/admin-add-product.js"></script>
+  <script src="js/add-product.js"></script>
 </body>
 
 </html>
