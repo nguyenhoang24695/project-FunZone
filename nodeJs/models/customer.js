@@ -9,7 +9,8 @@ module.exports = mongoose.model('customers', {
 	},
 	cPhone: {
 		type: String,
-		required: true
+		required: true,
+		unique: true
 	},
 	cEmail: {
 		type: String,
