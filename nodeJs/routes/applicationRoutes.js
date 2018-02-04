@@ -15,7 +15,7 @@ module.exports = function(app){
 		.delete(customerController.delete);
 
 	// admin api.
-	// app.route('/_api/v1/admins')
+	// app.route('/_api/v1/admins')n
 	// 	.get(adminController.getList)
 	// 	.post(adminController.add);	
 
