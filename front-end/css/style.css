@@ -65,7 +65,7 @@ a:hover {
     color: #f05f40;
 }
 span{
-  font-family: 'Roboto Condensed' !important;
+  /* font-family: 'Roboto Condensed' !important; */
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Roboto Condensed', 'Helvetica Neue', Arial, sans-serif;
@@ -662,4 +662,7 @@ img {
   .buy-ticket {
     width: 20%;
   }
+ }
+ footer span{
+  font-family: "Roboto Condensed",sans-serif;
  }
