@@ -144,7 +144,7 @@
               <td class="subject"> Nội dung</td>
               <td>
                 <div class="form-group">
-                  <textarea class="form-control fillbig info" id="exampleTextarea" rows="3"></textarea>
+                  <textarea class="form-control fillbig info" id="exampleTextarea" rows="3" name="content"></textarea>
                 </div>
                 <p class="must mustinfo">Thông tin bắt buộc</p>
               </td>
@@ -153,7 +153,7 @@
               <td></td>
               <td></td>
               <td>
-                <button type="button" class="send btn btn-danger">Gửi đi</button>
+                <button type="button" class="send btn btn-danger" id="submitBtn">Gửi đi</button>
               </td>
             </tr>
           </table>
@@ -292,9 +292,9 @@
 
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="js/buyticket.js">
-  </script>
-  <script>
+  <script src="js/buyticket.js"></script>
+  <script src="js/contact.js"></script>
+  <!-- <script>
     $(document).ready(function (e) {
       $('.send').click(function (e) {
         var name = $('.name').val();
@@ -328,7 +328,7 @@
       });
     });
   
-  </script>
+  </script> -->
 </body>
 
 </html>
