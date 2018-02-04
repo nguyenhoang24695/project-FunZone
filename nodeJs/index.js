@@ -14,9 +14,9 @@ mongoose.connect('mongodb://localhost/project_fun_zone');
 mongoose.Promise = global.Promise;
 
 var applicationRoutes = require('./routes/applicationRoutes');
-
+var ccRoutes = require('./routes/customer-contactRoutes');
 applicationRoutes(app);
-
+ccRoutes(app);
 
 app.listen(3000, function(){
 	console.log('I am running at port 3000!');
