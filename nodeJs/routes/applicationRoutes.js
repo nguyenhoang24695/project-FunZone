@@ -2,7 +2,7 @@ var customerController = require('../controllers/customerController');
 // var adminController = require('../controllers/adminController');
 var productController = require('../controllers/productController');
 var cartController = require('../controllers/cartController');
-
+var ccController = require('../controllers/customer-contactController');
 module.exports = function(app){
 	// customer api.
 	app.route('/_api/v1/customers')
@@ -15,7 +15,7 @@ module.exports = function(app){
 		.delete(customerController.delete);
 
 	// admin api.
-	// app.route('/_api/v1/admins')
+	// app.route('/_api/v1/admins')n
 	// 	.get(adminController.getList)
 	// 	.post(adminController.add);	
 
@@ -55,3 +55,15 @@ module.exports = function(app){
 		});
 	});	
 }
+
+module.exports = function (app) {
+  // customer api.
+  app.route('/_api/v1/cContact')
+    .post(ccController.add);
+  app.route('/_api/v1/cContact')
+    .get(ccController.getList);
+  // admin api
+  app.route('/_api/v1/cContact/:id')
+    .get(ccController.getDetail)
+    .delete(ccController.delete);
+};
