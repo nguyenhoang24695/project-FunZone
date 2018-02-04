@@ -1,30 +1,30 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-module.exports = mongoose.model('cContact', {
+module.exports = mongoose.model('CustomerContact', {
 	ccName: {
 		type: String,
-		// required: true
+		required: true
   },
   ccAddress: {
     type: String,
-    // required: true
+    required: true
   },
 	ccPhone: {
 		type: String,
-		// required: true
+		required: true
 	},
 	ccEmail: {
 		type: String,
-		// required: true
+		required: true
   },
   ccTitle: {
     type: String,
-    // required: true
+    required: true
   },
   ccSubject: {
     type: String,
-    // required: true
+    required: true
   },
 	status: {
     type: Number,
