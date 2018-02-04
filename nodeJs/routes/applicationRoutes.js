@@ -23,7 +23,14 @@ module.exports = function(app){
 	// 	.get(adminController.getDetail)
 	// 	.put(adminController.update)
 	// 	.delete(adminController.delete);
-
+	app.route('/_api/v1/cContact')
+    .post(ccController.add);
+  app.route('/_api/v1/cContact')
+    .get(ccController.getList);
+  // admin api
+  app.route('/_api/v1/cContact/:id')
+    .get(ccController.getDetail)
+    .delete(ccController.delete);
 	// products api.
 	app.route('/_api/v1/products')
 		.get(productController.getList)
@@ -55,15 +62,3 @@ module.exports = function(app){
 		});
 	});	
 }
-
-module.exports = function (app) {
-  // customer api.
-  app.route('/_api/v1/cContact')
-    .post(ccController.add);
-  app.route('/_api/v1/cContact')
-    .get(ccController.getList);
-  // admin api
-  app.route('/_api/v1/cContact/:id')
-    .get(ccController.getDetail)
-    .delete(ccController.delete);
-};
