@@ -28,6 +28,6 @@ module.exports = mongoose.model('cContact', {
   },
 	status: {
     type: Number,
-    defeault: 1
+    default: 1
   }
 });
