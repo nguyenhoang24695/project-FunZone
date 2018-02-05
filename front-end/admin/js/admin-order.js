@@ -26,7 +26,7 @@ function loadOrder(page, limit) {
           content += '<td>' + listOrder[i].phone + '</td>';
           content += '<td>' + listOrder[i].orderId + '</td>';
           content += '<td>' + listOrder[i].totalPrice + '</td>'; ;
-          content += '<a href="#" onclick="deleteOrder(\'' + id + '\')" class="btn btn-danger">Delete</a>';
+          content += '<td>' + '<a href="#" onclick="deleteOrder(\'' + id + '\')" class="btn btn-danger">Delete</a>';
           content += '</td>';
         content += '</tr>';
       }
