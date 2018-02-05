@@ -1,4 +1,5 @@
 var contactAPI = "http://localhost:3000/_api/v1/cContact";
+
 $(document).ready(function(){
     $('#submitBtn').click(function(){
         var name = $('[name="name"]').val();
@@ -29,5 +30,5 @@ $(document).ready(function(){
 				alert('Có lỗi xảy ra. ' + message);
 			}
 		});
-    })
-})
+    });
+});

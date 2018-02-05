@@ -3,11 +3,11 @@ var customerController = require('../controllers/customerController');
 var productController = require('../controllers/productController');
 var cartController = require('../controllers/cartController');
 var ccController = require('../controllers/customer-contactController');
-module.exports = function(app){
+module.exports = function (app) {
 	// customer api.
 	app.route('/_api/v1/customers')
 		.get(customerController.getList)
-		.post(customerController.add);	
+		.post(customerController.add);
 
 	app.route('/_api/v1/customers/:id')
 		.get(customerController.getDetail)
@@ -24,41 +24,41 @@ module.exports = function(app){
 	// 	.put(adminController.update)
 	// 	.delete(adminController.delete);
 	app.route('/_api/v1/cContact')
-    .post(ccController.add);
-  app.route('/_api/v1/cContact')
-    .get(ccController.getList);
-  // admin api
-  app.route('/_api/v1/cContact/:id')
-    .get(ccController.getDetail)
-    .delete(ccController.delete);
+		.post(ccController.add);
+	app.route('/_api/v1/cContact')
+		.get(ccController.getList);
+	// admin api
+	app.route('/_api/v1/cContact/:id')
+		.get(ccController.getDetail)
+		.delete(ccController.delete);
 	// products api.
 	app.route('/_api/v1/products')
 		.get(productController.getList)
-		.post(productController.add);	
+		.post(productController.add);
 
 	app.route('/_api/v1/products/:id')
 		.get(productController.getDetail)
 		.put(productController.update)
-		.delete(productController.delete);	
+		.delete(productController.delete);
 
 	app.route('/_api/v1/cart')
 		.post(cartController.saveCart);
 
 	// image api.	
-	app.post('/_api/v1/images', function(req, res) {		
+	app.post('/_api/v1/images', function (req, res) {
 		console.log(req.files);
 		if (!req.files)
 			return res.status(400).send('No files were uploaded.');
 
 		// The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-		let sampleFile = req.files.myFile;	
+		let sampleFile = req.files.myFile;
 
 		// Use the mv() method to place the file somewhere on your server
-		sampleFile.mv('./public/images/' + sampleFile.name, function(err) {
+		sampleFile.mv('./public/images/' + sampleFile.name, function (err) {
 			if (err)
-			  return res.status(500).send(err);
+				return res.status(500).send(err);
 
 			res.send('http://localhost:3000/images/' + sampleFile.name);
 		});
-	});	
+	});
 }
