@@ -45,3 +45,17 @@ exports.delete = function(req, resp){
 		});
 	});	
 }
+exports.getAllList = function(req, resp){
+	// Lấy tham số và parse ra number.	
+	var page = Number(req.query.page);
+	var limit = Number(req.query.limit);
+
+	Model.find()
+	.paginate(page, limit, function(err, result, total) {    	
+    	var responseData = {
+    		'list': result,
+    		'totalPage': Math.ceil(total/limit)
+    	};
+    	resp.send(responseData);
+  	});
+}
