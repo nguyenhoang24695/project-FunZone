@@ -15,6 +15,17 @@ p{
 #alone{
   font-family: 'Roboto Condensed';
   font-size: 20px;
+  color: #212529;
+}
+
+#logo{
+  width: 39px;
+  height: 26px;
+}
+
+#logo{
+  width: 39px;
+  height: 26px;
 }
 
 body {
@@ -54,7 +65,7 @@ a:hover {
     color: #f05f40;
 }
 span{
-  font-family: 'Roboto Condensed' !important;
+  /* font-family: 'Roboto Condensed' !important; */
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Roboto Condensed', 'Helvetica Neue', Arial, sans-serif;
@@ -186,6 +197,7 @@ img::-moz-selection {
     #mainNav.navbar-shrink .navbar-nav > li.nav-item > a.nav-link:focus:hover {
             color: #F05F40;
     }
+
 }
 
 .service-box {
@@ -627,3 +639,30 @@ img {
   max-width: 100%;
   vertical-align: middle;
 }
+.buy-ticket {
+  position: fixed;
+  top: 45%;
+  right: 0;
+  width: 10%;
+}
+.buy-ticket-title img {
+  display: none;
+}
+@media (max-width: 991px) and (min-width: 768px){ 
+  .buy-ticket {
+    width: 15%;
+  }
+ }
+ @media (max-width: 768px) and (min-width: 360px){ 
+  .buy-ticket {
+    width: 20%;
+  }
+ }
+ @media (max-width:360px){ 
+  .buy-ticket {
+    width: 20%;
+  }
+ }
+ footer span{
+  font-family: "Roboto Condensed",sans-serif;
+ }

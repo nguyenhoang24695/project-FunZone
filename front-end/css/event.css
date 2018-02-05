@@ -3,6 +3,10 @@
   background-color: #ebe7de;
 }*/
 
+* {
+  /* font-family: "Roboto Condensed",sans-serif !important; */
+}
+
 #main-heading {
   font-family: "Roboto Condensed",sans-serif;
 }
@@ -56,4 +60,7 @@
   border-top: 10px solid #940709;   
   width: 100%;
   overflow: hidden;
+}
+a span{
+  font-family: "Roboto Condensed",sans-serif;
 }

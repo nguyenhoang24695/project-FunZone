@@ -1,0 +1,207 @@
+* {
+  	font-family: 'Roboto Condensed', 'Helvetica Neue', Arial, sans-serif;
+ }
+
+.product-banner {
+	position: relative;
+	cursor: pointer;
+}
+
+.product-banner .img-bg-full {
+    padding: 0;
+    height: 70vh;
+    max-height: 60rem;
+    min-height: 200px;
+}
+
+div.img-bg, .img-bg-full {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.product-banner .photo-by {
+    position: absolute;
+    bottom: 0;
+    right: 30px;
+    opacity: 0.5;
+    color: #fff;
+}
+
+.product-wrap {
+    background: #FFF;
+    padding-top: 10px;
+}
+
+.row {
+	margin: 0 -15px 20px -15px;
+}
+
+.critical-info {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.prod-intro {
+    margin: 30px 0;
+}
+
+.recent-review {
+    border-top: 1px solid #eee;
+    margin-bottom: 30px;
+}
+
+.recent-review h3 {
+    margin-top: 20px;
+}
+
+.review-item {
+    padding: 10px 0;
+    font-size: 1.4rem;
+}
+
+.review-item .review-content h5 {
+    font-size: 1.6rem;
+    margin: 2px 0;
+}
+
+.review-content {
+	padding-top: 20px;
+}
+
+.product-star {
+    font-size: 1.2rem;
+    color: #999;
+}
+
+@media (max-width: 767px){
+	h3, .h3 {
+	    font-size: 1.8rem;
+	    line-height: 1.7;
+	}
+}
+
+#booking-bar {
+    padding-top: 15px;
+    padding-right: 15px;
+    width: 360px;
+    border-radius: 6px;
+}
+
+.affix {
+    /*position: fixed;*/
+    position: sticky;
+    top: 50px;
+	transform: matrix(1, 0, 0, 1, 0, 0);
+    -webkit-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+
+.booking-bar-content {
+    background-color: #fff;
+    border: 1px solid #e1e1e1;
+    border-radius: 6px;
+    padding: 10px 15px;
+    font-size: 20px;
+}
+
+.price h5 {
+    margin-top: 10px;
+}
+
+#prodInfo {
+    margin-top: 20px;
+}
+
+.pull-left {
+    float: left!important;
+}
+
+.pull-right {
+	float: right!important;
+}
+
+.product-pricing {
+    letter-spacing: 0;
+    text-align: right;
+}
+
+.product-pricing h4, .product-pricing h2 {
+    display: inline-block;
+    font-weight: 400;
+    margin: 0;
+}
+
+#booking-bar .btn {
+    border: 1px solid #e1e1e1;
+    cursor: pointer;
+}
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.table ul {
+    padding: 0;
+}
+
+.table ul li {
+    float: left;
+    border-bottom: 1px solid #eee;
+    height: 45px;
+    padding-top: 10px;
+}
+
+.table ul .longpro {
+    width: 40%;
+}
+
+.table ul .shortpro {
+    width: 20%;
+    text-align: center;
+}
+
+.table ul .totalpro {
+    width: 80%;
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    border: 1px solid #eee;
+    border-radius: 10px;
+}
+
+input:active {
+    border: 1px solid #eee;
+}
+
+@media (max-width: 1024px) {
+    .booking-bar-content {
+        width: 100%;
+    }
+    .table ul li {
+        height: 110px;
+    }
+}
+
+.input-group-btn {
+    width: 35px;
+    padding: 0;
+    margin: 0;
+}
+
+.table .shortpro input, .table .shortpro span, button {
+    float: left;
+    height: 30px;
+    width: auto;
+    text-align: center;
+}
