@@ -20,12 +20,12 @@ function loadcContact(page, limit) {
       for (var i = 0; i < listcContact.length; i++) {
         var id = listcContact[i]._id;
         content += '<tr>';
-          content += '<td>' + listcContact[i].name + '</td>';
-          content += '<td>' + listcContact[i].address + '</td>';
-          content += '<td>' + listcContact[i].phone + '</td>';
-          content += '<td>' + listcContact[i].email + '</td>';
-          content += '<td>' + listcContact[i].title + '</td>';
-          content += '<td>' + listcContact[i].content + '</td>';
+          content += '<td>' + listcContact[i].ccName + '</td>';
+          content += '<td>' + listcContact[i].ccAddress + '</td>';
+          content += '<td>' + listcContact[i].ccPhone + '</td>';
+          content += '<td>' + listcContact[i].ccEmail + '</td>';
+          content += '<td>' + listcContact[i].ccTitle + '</td>';
+          content += '<td>' + listcContact[i].ccSubject + '</td>';
           content += '<a href="#" onclick="deleteOrder(\'' + id + '\')" class="btn btn-danger">Delete</a>';
           content += '</td>';
         content += '</tr>';
