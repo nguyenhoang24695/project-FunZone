@@ -26,7 +26,7 @@ function loadcContact(page, limit) {
           content += '<td>' + listcContact[i].ccEmail + '</td>';
           content += '<td>' + listcContact[i].ccTitle + '</td>';
           content += '<td>' + listcContact[i].ccSubject + '</td>';
-          content += '<a href="#" onclick="deleteOrder(\'' + id + '\')" class="btn btn-danger">Delete</a>';
+          content += '<td>' + '<a href="#" onclick="deleteContact(\'' + id + '\')" class="btn btn-danger">Delete</a>';
           content += '</td>';
         content += '</tr>';
       }
@@ -65,10 +65,10 @@ function loadcContact(page, limit) {
 
 
 
-function deleteOrder(id) {
+function deleteContact(id) {
   if (confirm('Are you sure?')) {
     $.ajax({
-      url: ontactAPI + '/' + id,
+      url: contactAPI + '/' + id,
       type: 'DELETE',
       success: function (response) {
         alert('Success.');
