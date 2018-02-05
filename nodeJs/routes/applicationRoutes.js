@@ -43,7 +43,8 @@ module.exports = function(app){
 
 	app.route('/_api/v1/cart')
 		.post(cartController.saveCart);
-
+	app.route('/_api/v1/adminProducts')
+		.get(productController.getAllList)
 	// image api.	
 	app.post('/_api/v1/images', function(req, res) {		
 		console.log(req.files);
