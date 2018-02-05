@@ -52,16 +52,14 @@ $('.table').on('click', '.btnProduct', function() {
     var productCode = $('.table').children('ul').children('.product-code').text();
     var productName = $('.table').children('ul').children('.product-name').text();
     var productPrice = $('.table').children('ul').children('.product-price').text();
-    var quantity = $('.table').children('ul').children('.product-quantity').children('input').val(); 
+    var productQuantity = $('.table').children('ul').children('.product-quantity').children('input').val(); 
     var totalItemPrice = $('.table').children('ul').children('.total-item-price').text();
 
-    if($(this).children().attr('class').indexOf('fa-plus') >= 0){       
+    if($(this).children('.fa').attr('class').indexOf('fa-plus') >= 0){       
       quantity = 1;
       // alert('Thêm ' + productName + ' thành công.');
-      // totalItemPrice = productPrice * quantity;
-    } else if ($(this).children().attr('class').indexOf('fa-minus') >= 0){       
+    } else if ($(this).children('.fa').attr('class').indexOf('fa-minus') >= 0){       
       quantity = -1; // if delete, set quantity = -productQuantity;
-        // totalItemPrice = productPrice * quantity;
     };
     
     location.reload();
