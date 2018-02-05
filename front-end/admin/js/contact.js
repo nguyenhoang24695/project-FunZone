@@ -14,7 +14,7 @@ function loadcContact(page, limit) {
     url: contactAPI + '?page=' + page + '&limit=' + limit,
     type: 'GET',
     success: function (response) {
-      var listcContact = response.listcContact;
+      var listcContact = response.listCustomer;
       var totalPage = response.totalPage;
       var content = '';
       for (var i = 0; i < listcContact.length; i++) {
