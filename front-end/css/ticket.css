@@ -141,3 +141,10 @@ div.img-bg, .img-bg-full {
 .product-info {
     text-align: justify;
 }
+
+.normal {
+  font-size: 17px;
+  font-weight: 400;
+  font-family: 'Roboto Condensed', 'Helvetica Neue', Arial, sans-serif;
+  color: #000;
+}

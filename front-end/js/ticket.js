@@ -4,9 +4,8 @@ $(document).ready(function(){
   loadTicket();
 });
 
-function loadTicket() {
+function loadTicket(){
   $.ajax({
-    // url: TICKET_API + '/' + id,
     url: TICKET_API,
     type: 'GET',
     success: function(response) {
@@ -17,10 +16,11 @@ function loadTicket() {
           htmlContent += '<div class="col-lg-8">';
           htmlContent += '<div id="prodInfo">';
           htmlContent += '<h2 class="product-name">' + ticket.pName + '</h2>';
-          htmlContent += '<div class="critical-info">';
+          htmlContent += '<div class="critical-info product-code">';
           htmlContent += '<i class="fa fa-bookmark-o" aria-hidden="true"></i>';
-          htmlContent += '&nbsp; Mã dịch vụ: '+ ticket.pId;
+          htmlContent += '&nbsp; Mã dịch vụ: <span class="normal">'+ ticket.pId + '</span>';
           htmlContent += '</div>';
+          htmlContent += '<div class="product-id" style="display: none;">' + ticket._id + '</div>'
           htmlContent += '<div class="prod-intro">';
           htmlContent += '<i class="fa fa-book" aria-hidden="true"></i>';
           htmlContent += '&nbsp;' + ticket.pDescription + '</div>';
@@ -35,19 +35,21 @@ function loadTicket() {
           htmlContent += '<div class="pull-right">';
           htmlContent += '<div class="product-pricing">';
           htmlContent += '<h4>VND </h4>';
-          htmlContent += '<h2 class="text-primary product-price">' + ticket.pPrice + '</h2>';
+          htmlContent += '<h2 class="product-price text-primary">' + ticket.pPrice + '</h2>';
           htmlContent += '</div>';
           htmlContent += '</div>';
           htmlContent += '<div class="clearfix"></div>';
           htmlContent += '<div class="space"></div>';
-          htmlContent += '<div class="btn btn-info btn-block btn-lg">';
+          htmlContent += '<a href="cart.html">'
+          htmlContent += '<div class="btn btn-info btn-block btn-lg addTicket bookTicket">';
           htmlContent += '<span>';
           htmlContent += '<i class="fa fa-ticket" aria-hidden="true"></i>&nbsp;Đặt vé';
           htmlContent += '</span>';
           htmlContent += '</div>';
+          htmlContent += '</a>';
           htmlContent += '</div>';
           htmlContent += '<div class="space"></div>';
-          htmlContent += '<div class="btn btn-outline-secondary btn-lg btn-block">';
+          htmlContent += '<div class="btn btn-outline-secondary btn-lg btn-block addTicket">';
           htmlContent += '<span>';
           htmlContent += '<i class="fa fa-heart" aria-hidden="true"></i>&nbsp;Thêm vé';
           htmlContent += '</span>';
@@ -56,7 +58,7 @@ function loadTicket() {
           htmlContent += '</div>';
           htmlContent += '</div>';
 
-      $('.img-bg-full').css("background-image", 'url(' + ticket.pImage + ')');
+      $('.img-bg-full').css('background-image', 'url(' + ticket.pImage + ')');
       $('#result').html(htmlContent);
     },
     error: function(response){
@@ -67,28 +69,25 @@ function loadTicket() {
 };
 
 $('#result').on('click', '.btn', function() {
-      // Lấy ra mã sản phẩm từ link.
-      var productId = $(this).children('.col-lg-8').children().children('.critical-info').text();
-      var productName = $(this).children('.col-lg-8').children('.pruduct-name').text();
-      var productPrice = $(this).children('.col-lg-4').children().children().children().children('.pull-right').children().children('.prudct-price').text();
-      
+    // Lấy ra mã sản phẩm từ link.
+    var productId = $('#result').children('.col-lg-8').children('#prodInfo').children('.product-id').text();
+    var productCode = $('#result').children('.col-lg-8').children('#prodInfo').children('.product-code').children('.normal').text();
+    var productName = $('#result').children('.col-lg-8').children('#prodInfo').children('.product-name').text();
+    var productPrice = $('#result').children('.col-lg-4').children('#booking-bar').children('.booking-bar-content').children('.price').children('.pull-right').children('.product-pricing').children('.product-price').text();
+    
+    quantity = 0;
+    if($(this).attr('class').indexOf('addTicket') >= 0){       
+      quantity = +1;
+    };
+    
+    addToCart(productId, productCode, productName, productPrice, quantity);
+});
 
-      if($(this).children().attr('class').indexOf('fa-plus') >= 0){       
-        quantity = +1;
-      } else if ($(this).children().attr('class').indexOf('fa-minus') >= 0){       
-        quantity = -1; // if delete, set quantity = -productQuantity;
-      }  
-      
-      addToCart(productId, productName, productPrice, quantity);
-    });
+$('.bookTicket').on('click', function(){
+  window.location.href = "cart.html"
+})
 
-
-function bookTicket(){
-  addToCart();
-  window.location.href = "cart.html";
-};
-
-function addToCart(productId, productName, productPrice, quantity){
+function addToCart(productId, productCode, productName, productPrice, quantity){
   var cart = localStorage.getItem('cart');  
   if (cart == null){
     // Nếu chưa thì tạo mới giỏ hàng với products là danh sách các sản phẩm kèm số lượng.
@@ -97,6 +96,7 @@ function addToCart(productId, productName, productPrice, quantity){
         'products': [
           {
             'id': productId,
+            'code': productCode,
             'name': productName,
             'price': productPrice,
             'quantity': quantity
@@ -131,6 +131,7 @@ function addToCart(productId, productName, productPrice, quantity){
         // Thêm mới sản phẩm với quantity default là 1.
         cart.products.push({
           'id': productId,
+          'code': productCode,
           'quantity': quantity,
           'name': productName,
           'price': productPrice
@@ -141,14 +142,4 @@ function addToCart(productId, productName, productPrice, quantity){
   alert('Thêm ' + productName + ' thành công. Số lượng ' + quantity);
   // Lưu lại thông tin giỏ hàng vào localStorage.
   localStorage.setItem('cart', JSON.stringify(cart));
-}
-
-function getParameterByName(name) {
-    var url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
