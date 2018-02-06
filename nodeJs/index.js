@@ -8,7 +8,7 @@ const fileUpload = require('express-fileupload');
 // Kết nối đến mongodb ở project tạm
 mongoose.connect('mongodb://nguyenhoang95:liuyifei1A@ds123658.mlab.com:23658/fun_zone_project');
 mongoose.Promise = global.Promise;
-app.set('port', (process.env.PORT || 5000));
+app.set('port', (process.env.PORT || 3000));
 
 app.use(cors());
 app.use(fileUpload());

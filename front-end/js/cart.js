@@ -122,6 +122,29 @@ function addToCart(productId, productCode, productName, productPrice, quantity) 
   localStorage.setItem('cart', JSON.stringify(cart));
 }
 
+function addCustomer(){
+  var cName = $('[name="cName"]').val();
+  var cPhone = $('[name="cPhone"]').val();
+  var cEmail = $('[name="cEmail"]').val();
+  var contact = {
+    'cName': cName,
+    'cPhone': cPhone,
+    'cEmail': cEmail
+  };
+
+  $.ajax({
+    url: "http://localhost:3000/_api/v1/cart",
+    method: 'POST',
+    data: contact,
+    success: function(){
+      alert();
+      window.location.href = "ticketlist.html";
+    },
+    error: function(){
+      alert('Có lỗi xảy ra. Vui lòng thử lại.');
+    }
+  });
+}
 
 function submitCart() {
   var cart = localStorage.getItem('cart');
@@ -135,18 +158,23 @@ function submitCart() {
       'pPrice': cart.products[i].pPrice
     };
     arrayProducts.push(product);
+
+    $.ajax({
+      url: "http://localhost:3000/_api/v1/cart",
+      type: 'POST',
+      data: data,
+      success: function (response) {
+        alert("");
+        // localStorage.removeItem('cart');
+      },
+      error: function (response, message) {
+        alert('Có lỗi xảy ra ' + message);
+      }
+    });
+    
   }
-  var cName = $('[name="cName"]').val();
-	var cPhone = $('[name="cPhone"]').val();
-	var cEmail = $('[name="cEmail"]').val();
-  var contact = {
-    'cName': cName,
-    'cPhone': cPhone,
-    'cEmail': cEmail
-  };
   var data = {
-		'products': JSON.stringify(arrayProducts),
-		'contact': contact
+		'products': JSON.stringify(arrayProducts)
 	}	
   var api_url = "http://localhost:3000/_api/v1/cart";
   var method = 'POST';
@@ -166,7 +194,8 @@ function submitCart() {
   });
 }
 
-$('.btnSubmit').click(function () {
+$('.btnSubmit').click(function() {
   submitCart();
+  addCustomer();
 });
 

@@ -1,4 +1,4 @@
-var Customer = require('../models/customer');
+var Customer = require('../models/order');
 require('mongoose-pagination');
 
 exports.getList = function(req, resp){

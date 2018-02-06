@@ -339,11 +339,6 @@ img::-moz-selection {
   display: table;
 }
 
-.widget-area {
-  width: 33.33%;
-  float: left;
-}
-
 .box-footer {
   background-color: rgba(0, 0, 0, 0);
   background-image: url('http://banahills.sunworld.vn/wp-content/themes/banahills/images/box-footer.png');
@@ -550,7 +545,6 @@ img::-moz-selection {
   }
   .widget-area {
     width: 100%;
-    height: 
   }
   .footer-bottom {
     height: 140px;
