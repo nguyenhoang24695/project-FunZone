@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 module.exports = mongoose.model('products', {
 	pId: {
 		type: String,
+		required: true,
 		unique: true
 	},
 	pName: {
