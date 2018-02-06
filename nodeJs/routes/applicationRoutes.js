@@ -2,7 +2,7 @@ var customerController = require('../controllers/customerController');
 // var adminController = require('../controllers/adminController');
 var productController = require('../controllers/productController');
 var cartController = require('../controllers/cartController');
-
+var ccController = require('../controllers/customer-contactController');
 module.exports = function(app){
 	// customer api.
 	app.route('/_api/v1/customers')
@@ -15,7 +15,7 @@ module.exports = function(app){
 		.delete(customerController.delete);
 
 	// admin api.
-	// app.route('/_api/v1/admins')
+	// app.route('/_api/v1/admins')n
 	// 	.get(adminController.getList)
 	// 	.post(adminController.add);	
 
@@ -23,11 +23,21 @@ module.exports = function(app){
 	// 	.get(adminController.getDetail)
 	// 	.put(adminController.update)
 	// 	.delete(adminController.delete);
-
+	app.route('/_api/v1/cContact')
+    .post(ccController.add);
+  app.route('/_api/v1/cContact')
+    .get(ccController.getList);
+  // admin api
+  app.route('/_api/v1/cContact/:id')
+    .get(ccController.getDetail)
+    .delete(ccController.delete);
 	// products api.
 	app.route('/_api/v1/products')
 		.get(productController.getList)
 		.post(productController.add);	
+
+	// app.route('/_api/v1/products?category=:')
+	// 	.get(productController.getListCategory);
 
 	app.route('/_api/v1/products/:id')
 		.get(productController.getDetail)
@@ -36,7 +46,8 @@ module.exports = function(app){
 
 	app.route('/_api/v1/cart')
 		.post(cartController.saveCart);
-
+	app.route('/_api/v1/adminProducts')
+		.get(productController.getAllList)
 	// image api.	
 	app.post('/_api/v1/images', function(req, res) {		
 		console.log(req.files);
