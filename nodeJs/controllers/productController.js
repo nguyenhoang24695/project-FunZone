@@ -17,22 +17,22 @@ exports.getList = function(req, resp){
   	});
 }
 
-exports.getList = function(req, resp){
-	// Lấy tham số và parse ra number.
-	var page = Number(req.query.page);
-	var limit = Number(req.query.limit);
-	var category = String(req.query.category);
+// exports.getList = function(req, resp){
+// 	// Lấy tham số và parse ra number.
+// 	var page = Number(req.query.page);
+// 	var limit = Number(req.query.limit);
+// 	var category = String(req.query.category);
 
-	// Get list theo find {'category': Gate/ Hotel/ Restaurant}
-	Model.find({'status': 1, 'category': category})
-	.paginate(page, limit, function(err, result, total) {    	
-    	var responseData = {
-    		'list': result,
-    		'totalPage': Math.ceil(total/limit)
-    	};
-    	resp.send(responseData);
-  	});
-}
+// 	// Get list theo find {'category': Gate/ Hotel/ Restaurant}
+// 	Model.find({'status': 1, 'pCategory': category})
+// 	.paginate(page, limit, function(err, result, total) {    	
+//     	var responseData = {
+//     		'list': result,
+//     		'totalPage': Math.ceil(total/limit)
+//     	};
+//     	resp.send(responseData);
+//   	});
+// }
 
 exports.getDetail = function(req, resp){	
 	Model.findOne({ _id: req.params.id, 'status': 1 },function(err, result){

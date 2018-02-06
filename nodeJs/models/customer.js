@@ -26,6 +26,6 @@ module.exports = mongoose.model('customers', {
 	},
 	status: {
 		type: Number,
-		default: 0
+		default: 1
 	}
 });

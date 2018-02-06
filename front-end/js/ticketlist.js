@@ -1,4 +1,4 @@
-var TICKET_API = "https://funzone-project.herokuapp.com/_api/v1/products";
+var TICKET_API = "http://localhost:3000/_api/v1/products";
 
 $(document).ready(function(){
 	loadticketList();
@@ -38,7 +38,6 @@ function loadticketList (){
       },
       error: function(error, message){
         alert('Có lỗi xảy ra, vui lòng thử lại.');
-        window.location.reload();
       }
     });
 };
