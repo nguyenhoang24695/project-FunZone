@@ -48,12 +48,12 @@ function loadCart(){
 $('#cart').on('click', '.btnProduct', function() {
     // Lấy ra mã sản phẩm từ link.
     var quantity = 1;
-    var productId = $(this).parent().parent().children('.product-id').text();
-    var productCode = $(this).parent().parent().children('.product-code').text();
-    var productName = $(this).parent().parent().children('.product-name').text();
-    var productPrice = $(this).parent().parent().children('.product-price').val();
-    var productQuantity = $(this).parent().parent().children('.product-quantity').children('input').val(); 
-
+    var productId = $(this).parent().parent().parent().children('.product-id').text();
+    var productCode = $(this).parent().parent().parent().children('.product-code').text();
+    var productName = $(this).parent().parent().parent().children('.product-name').text();
+    var productPrice = $(this).parent().parent().parent().children('.product-price').val();
+    var productQuantity = $(this).parent().parent().parent().children('.product-quantity').children('input').val(); 
+    alert(productId);
     if($(this).parent().attr('class').indexOf('plus') >= 0){
       quantity = +1;
       // alert('Thêm ' + productName + ' thành công.');
