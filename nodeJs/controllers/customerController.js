@@ -23,7 +23,6 @@ exports.getDetail = function(req, resp){
 }
 
 exports.add = function(req, resp){
-	console.log(req.body.rollNumber);
 	var customer = new Customer(req.body);	
 	customer.save(function(err){				
 		resp.send(customer);
