@@ -160,3 +160,4 @@ function submitCart(){
 $('.btnSubmit').click(function () {
   submitCart();
 });
+

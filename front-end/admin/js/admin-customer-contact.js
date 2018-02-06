@@ -1,46 +1,31 @@
-product_API = "http://localhost:3000/_api/v1/adminProducts";
+CUSTOMER_CONTACT_API = "http://localhost:3000/_api/v1/cContact";
 
 $(document).ready(function () {
   var page = Number(getUrlParameter('page'));
   var limit = Number(getUrlParameter('limit'));
-  loadProduct(page, limit);
+  loadCustomerContact(page, limit);
   // $('body').on('click', '.delete-link', function(event){
   // 		alert(JSON.stringify(event.target));
   // 		return false;
   // });
 });
 
-function loadProduct(page, limit) {
+function loadCustomerContact(page, limit) {
   $.ajax({
-    url: product_API + '?page=' + page + '&limit=' + limit,
+    url: CUSTOMER_CONTACT_API + '?page=' + page + '&limit=' + limit,
     type: 'GET',
     success: function (response) {
-      var listProduct = response.list;
+      var listCustomerContact = response.list;
       var totalPage = response.totalPage;
       var content = '';
-      for (var i = 0; i < listProduct.length; i++) {
-        var id = listProduct[i]._id;
-        var pType = listProduct[i].pType;
-        if(pType){
-            pType = "Người lớn";
-        }else{
-            pType = "Trẻ em";
-        }
-        var status = listProduct[i].status;
-        if(status == 1){
-            status = "Đang bán"
-        }else if(status == 0){
-            status = "Dừng bán"
-        }
+      for (var i = 0; i < listCustomerContact.length; i++) {
+        var id = listCustomerContact[i]._id;
         content += '<tr>';
-          content += '<td>' + listProduct[i].pName + '</td>';
-          content += '<td>' + listProduct[i].pId + '</td>';
-          content += '<td>' + listProduct[i].pPrice + '</td>';
-          content += '<td>' + listProduct[i].pDescription + '</td>';
-          content += '<td>' + listProduct[i].pImage + '</td>';
-          content += '<td>' + listProduct[i].pCategory + '</td>';
-          content += '<td>' + pType + '</td>';
-          content += '<td>' + status + '</td>';
+          content += '<td>' + listCustomerContact[i].ccEmail + '</td>';
+          content += '<td>' + listCustomerContact[i].ccName + '</td>';
+          content += '<td>' + listCustomerContact[i].ccPhone + '</td>';
+          content += '<td>' + listCustomerContact[i].ccTitle + '</td>';
+          content += '<td>' + listCustomerContact[i].ccSubject + '</td>';
           content += '<td>' + '<a href="#" onclick="deleteContact(\'' + id + '\')" class="btn btn-danger">Delete</a>';
           content += '</td>';
         content += '</tr>';
@@ -81,16 +66,16 @@ function loadProduct(page, limit) {
 
 
 function deleteContact(id) {
-  if (confirm('Are you sure?')) {
+  if (confirm('Có chắc muốn xóa nội dung này?')) {
     $.ajax({
-      url: product_API + '/' + id,
+      url: CUSTOMER_CONTACT_API + '/' + id,
       type: 'DELETE',
       success: function (response) {
-        alert('Success.');
+        alert('Xóa thành công.');
         location.reload();
       },
       error: function (response, message) {
-        alert('Error. ' + message);
+        alert('Có lỗi xảy ra. Không xóa được nội dung. ' + message);
       }
     });
   }

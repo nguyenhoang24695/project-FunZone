@@ -24,13 +24,14 @@ module.exports = function(app){
 	// 	.put(adminController.update)
 	// 	.delete(adminController.delete);
 	app.route('/_api/v1/cContact')
-    .post(ccController.add);
-  app.route('/_api/v1/cContact')
-    .get(ccController.getList);
-  // admin api
-  app.route('/_api/v1/cContact/:id')
-    .get(ccController.getDetail)
-    .delete(ccController.delete);
+    	.post(ccController.add)
+		.get(ccController.getList);
+
+  	// admin customer contact api
+  	app.route('/_api/v1/cContact/:id')
+	    .get(ccController.getDetail)
+	    .delete(ccController.delete);
+    
 	// products api.
 	app.route('/_api/v1/products')
 		.get(productController.getList)
@@ -45,9 +46,16 @@ module.exports = function(app){
 		.delete(productController.delete);	
 
 	app.route('/_api/v1/cart')
-		.post(cartController.saveCart);
+		.post(cartController.saveCart)
+		.get(cartController.getOrder);
+
+	app.route('/_api/v1/cart/:id')
+		.delete(cartController.deleteOrder)
+		.get(cartController.getOrderDetail);
+
 	app.route('/_api/v1/adminProducts')
-		.get(productController.getAllList)
+		.get(productController.getAllList);
+
 	// image api.	
 	app.post('/_api/v1/images', function(req, res) {		
 		console.log(req.files);
