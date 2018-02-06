@@ -37,6 +37,9 @@ module.exports = function(app){
 		.get(productController.getList)
 		.post(productController.add);	
 
+	// app.route('/_api/v1/products?category=:')
+	// 	.get(productController.getListCategory);
+
 	app.route('/_api/v1/products/:id')
 		.get(productController.getDetail)
 		.put(productController.update)

@@ -61,6 +61,14 @@ a {
   font-family: 'Roboto Condensed' !important;
 }
 
+.ticket a {
+  color: #000;
+}
+
+.ticket a:hover {
+  color: #000;
+}
+
 a:hover {
     color: #f05f40;
 }
