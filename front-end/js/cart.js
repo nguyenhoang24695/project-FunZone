@@ -53,7 +53,6 @@ $('#cart').on('click', '.btnProduct', function() {
     var productName = $(this).parent().parent().parent().children('.product-name').text();
     var productPrice = $(this).parent().parent().parent().children('.product-price').val();
     var productQuantity = $(this).parent().parent().parent().children('.product-quantity').children('input').val(); 
-    alert(productId);
     if($(this).parent().attr('class').indexOf('plus') >= 0){
       quantity = +1;
       // alert('Thêm ' + productName + ' thành công.');
@@ -139,7 +138,7 @@ function submitCart(){
   var data = {
     'products': JSON.stringify(arrayProducts)
   } 
-  var api_url = "https://funzone-project.herokuapp.com/_api/v1/cart";
+  var api_url = "http://localhost:3000/_api/v1/cart";
   var method = 'POST';
 
   $.ajax({

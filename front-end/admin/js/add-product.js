@@ -103,7 +103,7 @@ $(document).ready(function(){
 	var pCategory = $('[name="pCategory"]:checked').val();
 	var pType = $('[name="pType"]:checked').val();
 	var status = $('[name="status"]:checked').val();
-	var pImage = $('#pImage').val();
+	var pImage = $('[name="avatarUrl"]').val();
 	// checkIsValidProductId();
 	checkIsValidProductName();
 	checkIsValidProductDescription();
@@ -155,7 +155,7 @@ $(document).ready(function(){
 		var pCategory = $('[name="pCategory"]:checked').val();
 		var pType = $('[name="pType"]:checked').val();
 		var status = $('[name="status"]:checked').val();
-		var pImage = $('#pImage').val();
+		var pImage = $('[name="avatarUrl"]').val();
 		// checkIsValidProductId();
 		checkIsValidProductName();
 		checkIsValidProductDescription();
