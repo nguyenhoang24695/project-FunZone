@@ -15,7 +15,7 @@ function loadCustomerContact(page, limit) {
     url: CUSTOMER_CONTACT_API + '?page=' + page + '&limit=' + limit,
     type: 'GET',
     success: function (response) {
-      var listCustomerContact = response.list;
+      var listCustomerContact = response.listCustomer;
       var totalPage = response.totalPage;
       var content = '';
       for (var i = 0; i < listCustomerContact.length; i++) {
