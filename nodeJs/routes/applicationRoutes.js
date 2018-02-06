@@ -7,7 +7,7 @@ module.exports = function(app){
 	// customer api.
 	app.route('/_api/v1/customers')
 		.get(customerController.getList)
-		.post(customerController.add);	
+		.post(customerController.add);
 
 	app.route('/_api/v1/customers/:id')
 		.get(customerController.getDetail)
@@ -23,11 +23,13 @@ module.exports = function(app){
 	// 	.get(adminController.getDetail)
 	// 	.put(adminController.update)
 	// 	.delete(adminController.delete);
+
+
+	// admin customer contact api
 	app.route('/_api/v1/cContact')
     	.post(ccController.add)
 		.get(ccController.getList);
 
-  	// admin customer contact api
   	app.route('/_api/v1/cContact/:id')
 	    .get(ccController.getDetail)
 	    .delete(ccController.delete);
@@ -42,6 +44,7 @@ module.exports = function(app){
 		.put(productController.update)
 		.delete(productController.delete);	
 
+	// cart/order api
 	app.route('/_api/v1/cart')
 		.post(cartController.saveCart)
 		.get(cartController.getOrder);
@@ -49,6 +52,7 @@ module.exports = function(app){
 	app.route('/_api/v1/cart/:id')
 		.delete(cartController.deleteOrder)
 		.get(cartController.getOrderDetail);
+
 
 	app.route('/_api/v1/adminProducts')
 		.get(productController.getAllList);

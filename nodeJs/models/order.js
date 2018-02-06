@@ -1,10 +1,10 @@
 var mongoose = require('mongoose');
 
 module.exports = mongoose.model('orders', {	
-	customerName: String,
+	cName: String,
 	totalPrice: Number,
-	customerphone: String,
-	customeremail: String,
+	cPhone: String,
+	cEmail: String,
 	createdAt: {
 		type: Date,
 		default: Date.now

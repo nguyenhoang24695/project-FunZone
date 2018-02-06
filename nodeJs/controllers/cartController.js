@@ -67,8 +67,32 @@ exports.saveCart = function(req, resp){
 	});
 }
 
-exports.getOrder = function(){}
+exports.getOrder = function(page, limit){
+	var page = Number(req.query.page);
+	var limit = Number(req.query.limit);
 
-exports.getOrderDetail = function(){}
+	Model.find()
+	.paginate(page, limit, function(err, result, total) {    	
+    	var responseData = {
+    		'list': result,
+    		'totalPage': Math.ceil(total/limit)
+    	};
+    	resp.send(responseData);
+  	});
+}
 
-exports.deleteOrder = function(){}
+exports.getOrderDetail = function(){
+	Model.findOne({ _id: req.params.id},function(err, result){
+		resp.send(result);
+	});
+}
+
+exports.deleteOrder = function(){
+	Model.findById(req.params.id,function(err, result){				
+		result.status = 0;
+		Model.findOneAndUpdate({_id: req.params.id}, result, {new: true}, function(err, result) {
+		    result.updatedAt = Date.now();
+		    resp.json(result);
+		});
+	});
+}
