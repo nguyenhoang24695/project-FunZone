@@ -1,13 +1,10 @@
 var mongoose = require('mongoose');
 
 module.exports = mongoose.model('orders', {	
-	customerId: {
-		type: String,
-		unique: true
-	},
+	customerName: String,
 	totalPrice: Number,
-	phone: String,
-	email: String,
+	customerphone: String,
+	customeremail: String,
 	createdAt: {
 		type: Date,
 		default: Date.now
