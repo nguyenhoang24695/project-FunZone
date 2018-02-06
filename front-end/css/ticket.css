@@ -1,10 +1,10 @@
 * {
-  	font-family: 'Roboto Condensed', 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Roboto Condensed', 'Helvetica Neue', Arial, sans-serif!important;
  }
 
 .product-banner {
-	position: relative;
-	cursor: pointer;
+    position: relative;
+    cursor: pointer;
 }
 
 .product-banner .img-bg-full {
@@ -22,21 +22,25 @@ div.img-bg, .img-bg-full {
     overflow: hidden;
 }
 
-.product-banner .photo-by {
+/*.product-banner .photo-by {
     position: absolute;
     bottom: 0;
     right: 30px;
     opacity: 0.5;
     color: #fff;
-}
+}*/
 
 .product-wrap {
     background: #FFF;
     padding-top: 10px;
 }
 
+.product-wrap h2, .product-wrap h3 {
+    text-align: center;
+}
+
 .row {
-	margin: 0 -15px 20px -15px;
+    margin: 0 -15px 20px -15px;
 }
 
 .critical-info {
@@ -58,7 +62,7 @@ div.img-bg, .img-bg-full {
 }
 
 .review-item {
-    padding: 10px 0;
+    padding: 10px 70px;
     font-size: 1.4rem;
 }
 
@@ -68,7 +72,7 @@ div.img-bg, .img-bg-full {
 }
 
 .review-content {
-	padding-top: 20px;
+    padding-top: 20px;
 }
 
 .product-star {
@@ -77,15 +81,14 @@ div.img-bg, .img-bg-full {
 }
 
 @media (max-width: 767px){
-	h3, .h3 {
-	    font-size: 1.8rem;
-	    line-height: 1.7;
-	}
+    h3, .h3 {
+        font-size: 1.8rem;
+        line-height: 1.7;
+    }
 }
 
 #booking-bar {
-    padding-top: 15px;
-    padding-right: 15px;
+    padding-top: 20px;
     width: 360px;
     border-radius: 6px;
 }
@@ -94,7 +97,7 @@ div.img-bg, .img-bg-full {
     /*position: fixed;*/
     position: sticky;
     top: 50px;
-	transform: matrix(1, 0, 0, 1, 0, 0);
+    transform: matrix(1, 0, 0, 1, 0, 0);
     -webkit-transform: translate3d(0,0,0);
     -o-transform: translate3d(0,0,0);
     transform: translate3d(0,0,0);
@@ -105,15 +108,10 @@ div.img-bg, .img-bg-full {
     border: 1px solid #e1e1e1;
     border-radius: 6px;
     padding: 10px 15px;
-    font-size: 20px;
 }
 
 .price h5 {
     margin-top: 10px;
-}
-
-#prodInfo {
-    margin-top: 20px;
 }
 
 .pull-left {
@@ -121,7 +119,7 @@ div.img-bg, .img-bg-full {
 }
 
 .pull-right {
-	float: right!important;
+    float: right!important;
 }
 
 .product-pricing {
@@ -139,6 +137,18 @@ div.img-bg, .img-bg-full {
     border: 1px solid #e1e1e1;
     cursor: pointer;
 }
+
+.product-info {
+    text-align: justify;
+}
+
+.normal {
+  font-size: 17px;
+  font-weight: 400;
+  font-family: 'Roboto Condensed', 'Helvetica Neue', Arial, sans-serif;
+  color: #000;
+}
+
 
 .fa {
   display: inline-block;
@@ -172,6 +182,7 @@ div.img-bg, .img-bg-full {
 .table ul .totalpro {
     width: 80%;
     text-align: center;
+    font-weight: bold;
 }
 
 input {
