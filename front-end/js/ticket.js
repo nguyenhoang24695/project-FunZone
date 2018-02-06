@@ -1,12 +1,12 @@
-var TICKET_API = "http://localhost:3000/_api/v1/products/5a72ff9895e0cd25cc4df245";
+var TICKET_API = "https://funzone-project.herokuapp.com/_api/v1/products";
 
 $(document).ready(function(){
-  loadTicket();
+  loadTicket(getUrlParameter('id'));
 });
 
-function loadTicket(){
+function loadTicket(id){
   $.ajax({
-    url: TICKET_API,
+    url: TICKET_API + '/' + id,
     type: 'GET',
     success: function(response) {
       console.log(response);
@@ -143,3 +143,19 @@ function addToCart(productId, productCode, productName, productPrice, quantity){
   // Lưu lại thông tin giỏ hàng vào localStorage.
   localStorage.setItem('cart', JSON.stringify(cart));
 }
+
+// Lấy tham số truyền lên trong url theo tên.
+function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};

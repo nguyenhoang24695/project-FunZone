@@ -28,9 +28,9 @@ function loadCart(){
     cartContent += '<li class="product-code" style="display: none;">' + cart.products[i].code + '</li>';
     cartContent += '<li class="longpro product-name">' + cart.products[i].name + '</li>';
     cartContent += '<li class="shortpro product-quantity">';
-    cartContent += '<button type="button" class="btn btn-info btnProduct"><i class="fa fa-minus" aria-hidden="true"></i></button>';
+    cartContent += '<span class="minus"><button type="button" class="btn btn-info btnProduct "><i class="fa fa-minus" aria-hidden="true"></i></button></span>';
     cartContent += '<input type="" name="" value="' + cart.products[i].quantity + '" style="width: 50px;">';
-    cartContent += '<button type="button" class="btn btn-info btnProduct"><i class="fa fa-plus" aria-hidden="true"></i></button>';
+    cartContent += '<span class="plus"><button type="button" class="btn btn-info btnProduct "><i class="fa fa-plus" aria-hidden="true"></i></button></span>';
     cartContent += '</li>';
     cartContent += '<li class="shortpro product-price">' + cart.products[i].price + '</li>';
     var totalItemPrice = cart.products[i].quantity * cart.products[i].price;
@@ -45,21 +45,20 @@ function loadCart(){
   $('#cart').html(cartContent);
 }
 
-
-$('.table').on('click', '.btnProduct', function() {
+$('#cart').on('click', '.btnProduct', function() {
     // Lấy ra mã sản phẩm từ link.
-    var productId = $('.table').children('ul').children('.product-id').text();
-    var productCode = $('.table').children('ul').children('.product-code').text();
-    var productName = $('.table').children('ul').children('.product-name').text();
-    var productPrice = $('.table').children('ul').children('.product-price').text();
-    var productQuantity = $('.table').children('ul').children('.product-quantity').children('input').val(); 
-    var totalItemPrice = $('.table').children('ul').children('.total-item-price').text();
+    var quantity = 1;
+    var productId = $(this).parent().parent().children('.product-id').text();
+    var productCode = $(this).parent().parent().children('.product-code').text();
+    var productName = $(this).parent().parent().children('.product-name').text();
+    var productPrice = $(this).parent().parent().children('.product-price').val();
+    var productQuantity = $(this).parent().parent().children('.product-quantity').children('input').val(); 
 
-    if($(this).children('.fa').attr('class').indexOf('fa-plus') >= 0){       
-      quantity = 1;
+    if($(this).parent().attr('class').indexOf('plus') >= 0){
+      quantity = +1;
       // alert('Thêm ' + productName + ' thành công.');
-    } else if ($(this).children('.fa').attr('class').indexOf('fa-minus') >= 0){       
-      quantity = -1; // if delete, set quantity = -productQuantity;
+    } else if ($(this).parent().attr('class').indexOf('minus') >= 0){       
+      quantity = -1 ; // if delete, set quantity = -productQuantity;
     };
     
     location.reload();
@@ -140,7 +139,7 @@ function submitCart(){
   var data = {
     'products': JSON.stringify(arrayProducts)
   } 
-  var api_url = "http://localhost:3000/_api/v1/cart";
+  var api_url = "https://funzone-project.herokuapp.com/_api/v1/cart";
   var method = 'POST';
 
   $.ajax({
