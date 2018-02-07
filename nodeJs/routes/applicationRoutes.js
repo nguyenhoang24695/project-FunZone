@@ -50,11 +50,11 @@ module.exports = function(app){
 	// cart/order api
 	app.route('/_api/v1/cart')
 		.post(cartController.saveCart)
-		.get(cartController.getOrder);
+		// .get(cartController.getOrder);
 
-	app.route('/_api/v1/cart/:id')
-		.delete(cartController.deleteOrder)
-		.get(cartController.getOrderDetail);
+	// app.route('/_api/v1/cart/:id')
+	// 	.delete(cartController.deleteOrder)
+	// 	.get(cartController.getOrderDetail);
 
 
 	app.route('/_api/v1/adminProducts')

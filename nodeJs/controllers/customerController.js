@@ -1,4 +1,4 @@
-var Customer = require('../models/order');
+var Customer = require('../models/customer');
 require('mongoose-pagination');
 
 exports.getList = function(req, resp){
@@ -23,10 +23,15 @@ exports.getDetail = function(req, resp){
 }
 
 exports.add = function(req, resp){
-	console.log(req.body.rollNumber);
 	var customer = new Customer(req.body);	
 	customer.save(function(err){				
-		resp.send(customer);
+		if(err){
+			// resp.send(err.message);
+			resp.status(400)
+			resp.send(err);
+		}else{
+			resp.send(customer);
+		}
 	});
 }
 
