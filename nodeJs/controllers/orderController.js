@@ -51,7 +51,7 @@ exports.update = function(req, resp){
 	});	
 }
 exports.delete = function(req, resp){	
-	order.findById(req.query.id,function(err, result){				
+	order.findById(req.query.id,function(err, result){		
 		result.status = 0;
 		order.findOneAndUpdate({_id: req.query.id}, result, {new: true}, function(err, result) {
 		    result.updatedAt = Date.now();

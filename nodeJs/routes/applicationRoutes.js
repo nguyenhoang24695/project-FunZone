@@ -28,10 +28,11 @@ module.exports = function (app) {
 	// order API
 	app.route('/_api/v1/order')
 		.get(orderController.getAllList)
-		.put(orderController.update);
-	app.route('/_api/v1/order/:status')
-		.get(orderController.getList)
+		.put(orderController.update)
 		.delete(orderController.delete);
+	app.route('/_api/v1/order/:status')
+		.get(orderController.getList);
+		
 	app.route('/_api/v1/order/d/:id')
 		.get(orderController.getDetail)
 
@@ -85,7 +86,7 @@ module.exports = function (app) {
 			if (err)
 				return res.status(500).send(err);
 
-			res.send('http://localhost:3000/images/' + sampleFile.name);
+			res.send('http://funzone-project.herokuapp.com/images/' + sampleFile.name);
 		});
 	});
 }
