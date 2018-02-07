@@ -29,10 +29,10 @@ function loadCustomerProduct(page, limit) {
             content += '<td>' + listCustomerProduct[i].email + '</td>';
             content += '<td>' + listCustomerProduct[i].name + '</td>';
             content += '<td>' + listCustomerProduct[i].phone + '</td>';
-            content += '<td>' + listCustomerProduct[i]._id + '</td>';
+            content += '<td>' + '<a href="admin-orderDetail.html?id='+ listCustomerProduct[i]._id +'"</a>'+ listCustomerProduct[i]._id +'</td>';
             content += '<td>' + listCustomerProduct[i].totalPrice + '</td>';
             content += '<td>' + status + '</td>';
-            content += '<td>' + '<a href="#" onclick="confirmProduct(\'' + listCustomerProduct[i]._id + ',' + status  + '\')" class="btn btn-info">Xác nhận</a></td>';
+            content += '<td>' + '<a href="#" onclick="confirmProduct(\'' + listCustomerProduct[i]._id + '\')" class="btn btn-info">Xác nhận</a></td>';
             content += '<td>' + '<a href="#" onclick="deleteProduct(\'' + listCustomerProduct[i]._id + '\')" class="btn btn-danger">Xóa</a></td>';
             content += '</tr>';
           } else if (status == 0) {
@@ -41,11 +41,10 @@ function loadCustomerProduct(page, limit) {
             content += '<td>' + listCustomerProduct[i].email + '</td>';
             content += '<td>' + listCustomerProduct[i].name + '</td>';
             content += '<td>' + listCustomerProduct[i].phone + '</td>';
-            content += '<td>' + listCustomerProduct[i]._id + '</td>';
+            content += '<td>' + '<a href="admin-orderDetail.html?id='+ listCustomerProduct[i]._id +'"</a>'+ listCustomerProduct[i]._id +'</td>';
             content += '<td>' + listCustomerProduct[i].totalPrice + '</td>';
             content += '<td>' + status + '</td>';
             content += '<td></td>';
-            content += '<td>' + '<a href="#" onclick="deleteProduct(\'' + listCustomerProduct[i]._id + '\')" class="btn btn-danger">Xóa</a></td>';
             content += '</tr>';
           };
         } else if (status == 1) {
@@ -54,11 +53,10 @@ function loadCustomerProduct(page, limit) {
           content += '<td>' + listCustomerProduct[i].email + '</td>';
           content += '<td>' + listCustomerProduct[i].name + '</td>';
           content += '<td>' + listCustomerProduct[i].phone + '</td>';
-          content += '<td>' + listCustomerProduct[i]._id + '</td>';
+          content += '<td>' + '<a href="admin-orderDetail.html?id='+ listCustomerProduct[i]._id +'"</a>'+ listCustomerProduct[i]._id +'</td>';
           content += '<td>' + listCustomerProduct[i].totalPrice + '</td>';
           content += '<td>' + status + '</td>';
           content += '<td>' + '</td>';
-          content += '<td>' + '<a href="#" onclick="deleteProduct(\'' + listCustomerProduct[i]._id + '\')" class="btn btn-danger">Xóa</a></td>';
           content += '</tr>';
         }
         // if (status == 1) {
@@ -116,24 +114,40 @@ function loadCustomerProduct(page, limit) {
 }
 
 
-function confirmProduct(id, status){
-  $.ajax({
-    url: ORDER_API + '/' + id,
-    type: 'PUT',
-    success: function (response) {
-      location.reload();
-    },
-    error: function (response, message) {
-      alert('Có lỗi xảy ra. Không thay đổi được nội dung. ' + message);
-    }
-  });
+function confirmProduct(id) {
+  if (confirm('Xác nhận đơn hàng?')) {
+    $.ajax({
+      url: ORDER_API + '?id=' + id,
+      type: 'PUT',
+      success: function (response) {
+        location.reload();
+      },
+      error: function (response, message) {
+        alert('Có lỗi xảy ra. Không thay đổi được nội dung. ' + message);
+      }
+    });
+  }
 }
 
+function orderDetail(id) {
+  if (confirm('Xác nhận đơn hàng?')) {
+    $.ajax({
+      url: ORDER_API + '/d/' + id,
+      type: 'GET',
+      success: function (response) {
+        location.reload();
+      },
+      error: function (response, message) {
+        alert('Có lỗi xảy ra. Không thay đổi được nội dung. ' + message);
+      }
+    });
+  }
+}
 
 function deleteProduct(id) {
   if (confirm('Có chắc muốn xóa sản phẩm này?')) {
     $.ajax({
-      url: ORDER_API + '/' + id,
+      url: ORDER_API + '?id=' + id,
       type: 'DELETE',
       success: function (response) {
         alert('Xóa thành công.');
@@ -147,41 +161,40 @@ function deleteProduct(id) {
 }
 
 
-$('.confirmed').click(function(){
+$('.confirmed').click(function () {
   $.ajax({
     url: ORDER_API + '/' + '1',
     type: 'GET',
-    success: function(response){
+    success: function (response) {
       var listCustomerProduct = response;
       var content = '';
       console.log(listCustomerProduct);
 
-      for (var i = 0; i < listCustomerProduct.length; i++) {  
+      for (var i = 0; i < listCustomerProduct.length; i++) {
         status = "Đã xác nhận";
         content += '<tr class="line">';
         content += '<td>' + listCustomerProduct[i].email + '</td>';
         content += '<td>' + listCustomerProduct[i].name + '</td>';
         content += '<td>' + listCustomerProduct[i].phone + '</td>';
-        content += '<td>' + listCustomerProduct[i]._id + '</td>';
+        content += '<td>' + '<a href="admin-orderDetail.html?id='+ listCustomerProduct[i]._id +'"</a>'+ listCustomerProduct[i]._id +'</td>';
         content += '<td>' + listCustomerProduct[i].totalPrice + '</td>';
         content += '<td>' + status + '</td>';
         content += '<td></td>';
-        content += '<td>' + '<a href="#" onclick="deleteProduct(\'' + listCustomerProduct[i]._id + '\')" class="btn btn-danger">Xóa</a></td>';
         content += '</tr>';
       }
-      $('#result').html(content);       
+      $('#result').html(content);
     },
-    error: function(response, message){
+    error: function (response, message) {
       alert('Có lỗi xảy ra. Vui lòng thử lại.');
     }
   });
 });
 
-$('.confirm').click(function(){
+$('.confirm').click(function () {
   $.ajax({
     url: ORDER_API + '/' + '2',
     type: 'GET',
-    success: function(response){
+    success: function (response) {
       var listCustomerProduct = response;
       var content = '';
       console.log(listCustomerProduct);
@@ -192,46 +205,47 @@ $('.confirm').click(function(){
         content += '<td>' + listCustomerProduct[i].email + '</td>';
         content += '<td>' + listCustomerProduct[i].name + '</td>';
         content += '<td>' + listCustomerProduct[i].phone + '</td>';
-        content += '<td>' + listCustomerProduct[i]._id + '</td>';
+        content += '<td>' + '<a href="admin-orderDetail.html?id='+ listCustomerProduct[i]._id +'"</a>'+ listCustomerProduct[i]._id +'</td>';
         content += '<td>' + listCustomerProduct[i].totalPrice + '</td>';
         content += '<td>' + status + '</td>';
         content += '<td>' + '<a href="#" onclick="confirmProduct(\'' + listCustomerProduct[i]._id + '\')" class="btn btn-info">Xác nhận</a></td>';
         content += '<td>' + '<a href="#" onclick="deleteProduct(\'' + listCustomerProduct[i]._id + '\')" class="btn btn-danger">Xóa</a></td>';
         content += '</tr>';
       }
-      $('#result').html(content);       
+      $('#result').html(content);
     },
-    error: function(response, message){
+    error: function (response, message) {
       alert('Có lỗi xảy ra. Vui lòng thử lại.');
     }
   });
 });
-
-$('.cancel').click(function(){
+$('[data-filter="all"]').click(function () {
+  location.reload();
+});
+$('.cancel').click(function () {
   $.ajax({
     url: ORDER_API + '/' + '0',
     type: 'GET',
-    success: function(response){
+    success: function (response) {
       var listCustomerProduct = response;
       var content = '';
       console.log(listCustomerProduct);
 
-      for (var i = 0; i < listCustomerProduct.length; i++) { 
+      for (var i = 0; i < listCustomerProduct.length; i++) {
         status = "Đã hủy";
         content += '<tr class="line">';
         content += '<td>' + listCustomerProduct[i].email + '</td>';
         content += '<td>' + listCustomerProduct[i].name + '</td>';
         content += '<td>' + listCustomerProduct[i].phone + '</td>';
-        content += '<td>' + listCustomerProduct[i]._id + '</td>';
+        content += '<td>' + '<a href="admin-orderDetail.html?id='+ listCustomerProduct[i]._id +'"</a>'+ listCustomerProduct[i]._id +'</td>';
         content += '<td>' + listCustomerProduct[i].totalPrice + '</td>';
         content += '<td>' + status + '</td>';
         content += '<td></td>';
-        content += '<td>' + '<a href="#" onclick="deleteProduct(\'' + listCustomerProduct[i]._id + '\')" class="btn btn-danger">Xóa</a></td>';
         content += '</tr>';
       }
-      $('#result').html(content);       
+      $('#result').html(content);
     },
-    error: function(response, message){
+    error: function (response, message) {
       alert('Có lỗi xảy ra. Vui lòng thử lại.');
     }
   });

@@ -137,13 +137,13 @@ function addCustomer() {
     method: 'POST',
     data: contact,
     success: function () {
-      alert();
+      // alert();
       // window.location.href = "ticketlist.html";
     },
     error: function (err) {
       var error = JSON.parse(err.responseText)
-      console.log(error)
-      alert('Có lỗi xảy ra.' + error.message);
+      // console.log(error)
+      // alert('Có lỗi xảy ra.' + error.message);
     }
   });
 }
@@ -165,6 +165,33 @@ function submitCart() {
   var cName = $('[name="cName"]').val();
   var cPhone = $('[name="cPhone"]').val();
   var cEmail = $('[name="cEmail"]').val();
+  // Validate
+  if (cName == undefined || cName == null || cName.length == 0 || cName.length > 25 || cName.length < 7) {
+    $("[name='cName']").next().addClass("text-danger").removeClass("text-success");
+    $("[name='cName']").next().text("Tên khách hàng phải lớn hơn 7 kí tự và nhỏ hơn 25 kí tự.");
+    return false;
+  } else {
+    $("[name='cName']").next().addClass("text-success").removeClass("text-danger");
+    $("[name='cName']").next().text("Tên khách hàng hợp lệ.");
+  }
+
+  if (cPhone == undefined || cPhone == null || cPhone.length == 0 || cPhone.length > 15 || cPhone.length < 8) {
+    $("[name='cPhone']").next().addClass("text-danger").removeClass("text-success");
+    $("[name='cPhone']").next().text("Số điện thoại không hợp lệ.");
+    return false;
+  } else {
+    $("[name='cPhone']").next().addClass("text-success").removeClass("text-danger");
+    $("[name='cPhone']").next().text("Số điện thoại hợp lệ.");
+  }
+  if (cEmail == undefined || cEmail == null || cEmail.length == 0 || cEmail.length > 50 || cEmail.length < 10) {
+    $("[name='cEmail']").next().addClass("text-danger").removeClass("text-success");
+    $("[name='cEmail']").next().text("Email không hợp lệ.");
+    return false;
+  } else {
+    $("[name='cEmail']").next().addClass("text-success").removeClass("text-danger");
+    $("[name='cEmail']").next().text("Email hợp lệ.");
+  }
+  // End validate
   var contact = {
     'cName': cName,
     'cPhone': cPhone,
@@ -192,10 +219,11 @@ function submitCart() {
       alert('Có lỗi xảy ra ' + message);
     }
   });
+  addCustomer();
 }
 
 $('.btnSubmit').click(function () {
   submitCart();
-  // addCustomer();
+  
 });
 
