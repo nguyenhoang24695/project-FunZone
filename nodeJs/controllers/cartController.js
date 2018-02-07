@@ -13,23 +13,21 @@ exports.saveCart = function (req, resp) {
 	var ids = [];
 	var mapProduct = {}; // Lưu map product để lấy số lượng sản phẩm về sau.
 	for (var i = 0; i < listOrderProducts.length; i++) {
-		mapProduct[listOrderProducts[i]._id] = listOrderProducts[i].quantity;
+		mapProduct[listOrderProducts[i].pID] = listOrderProducts[i].quantity;
 
-		var objectId = mongoose.Types.ObjectId(listOrderProducts[i]._id);
+		var objectId = mongoose.Types.ObjectId(listOrderProducts[i].pID);
 		ids.push(objectId);
 	}
 	// Tìm các sản phẩm nằm trong danh sách id truyền lên.
 	Product.find({
-		'_id': { $in: ids}
+		'_id': { $in: ids }
 	}, function (err, productResult) {
 		if (err) {
 			resp.send(err);
 			console.log(err);
 		} else {
-			console.log(productResult)
 			var orderDetailArray = [];
 			var totalPrice = 0;
-
 			// Tạo đối tượng order.
 			var order = new Order({
 				_id: mongoose.Types.ObjectId(),
@@ -39,22 +37,23 @@ exports.saveCart = function (req, resp) {
 				totalPrice: 0,
 				status: 2
 			});
-
 			// Tạo mảng order detail.
 			for (var i = 0; i < productResult.length; i++) {
 				var orderDetail = new OrderDetail({
 					orderId: order._id,
-					pId: productResult[i]._id,
-					quantity: mapProduct[productResult[i]._id],
-					unitPrice: productResult[i].price
+					pId: productResult[i].pId,
+					quantity: mapProduct[listOrderProducts[i].pID],
+					unitPrice: productResult[i].pPrice
 				});
 				// Thêm từng đối tượng order detail vào mảng.
 				orderDetailArray.push(orderDetail);
 				// Tính toán tổng giá đơn hàng.
 				totalPrice += orderDetail.quantity * orderDetail.unitPrice;
+				console.log('Tong gia: ' + totalPrice)
+				console.log('don gia gia: ' + orderDetail.unitPrice)
+				console.log('So luong gia: ' + orderDetail.quantity)
 			}
 			console.log(orderDetail)
-			console.log(orderDetailArray)
 			// Set tổng giá cho order.
 			order.totalPrice = totalPrice;
 
@@ -64,11 +63,15 @@ exports.saveCart = function (req, resp) {
 			transaction.insert('orders', order);
 			// Lưu danh sách order detail.
 			orderDetailArray.forEach(function (orderDetail) {
-				transaction.insert('order_details', orderDetail);
+				transaction.insert('orderDetail', orderDetail);
 			});
 			// Kết thúc transaction.
 			transaction.run(function (err, docs) {
-				resp.send('OK');
+				if (err) {
+					resp.status(400).send(err)
+				} else {
+					resp.status(200).send(docs)
+				}
 			});
 		}
 

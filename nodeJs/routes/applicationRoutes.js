@@ -3,6 +3,7 @@ var customerController = require('../controllers/customerController');
 var productController = require('../controllers/productController');
 var cartController = require('../controllers/cartController');
 var ccController = require('../controllers/customer-contactController');
+var orderController = require('../controllers/orderController');
 module.exports = function(app){
 	// customer api.
 	app.route('/_api/v1/customers')
@@ -24,6 +25,14 @@ module.exports = function(app){
 	// 	.put(adminController.update)
 	// 	.delete(adminController.delete);
 
+	// order API
+	app.route('/_api/v1/order')
+    	.post(orderController.add)
+		.get(orderController.getAllList);
+
+  	app.route('/_api/v1/order/:status')
+	    .get(orderController.getList)
+	    .delete(orderController.delete);
 
 	// admin customer contact api
 	app.route('/_api/v1/cContact')
