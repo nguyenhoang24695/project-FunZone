@@ -1,4 +1,4 @@
-ORDER_API = "http://localhost:3000/_api/v1/cart";
+ORDER_API = "http://localhost:3000/_api/v1/customers";
 
 $(document).ready(function () {
   var page = Number(getUrlParameter('page'));
@@ -15,7 +15,7 @@ function loadCustomerProduct(page, limit) {
     url: ORDER_API + '?page=' + page + '&limit=' + limit,
     type: 'GET',
     success: function (response) {
-      var listCustomerProduct = response.list;
+      var listCustomerProduct = response.listCustomer;
       var totalPage = response.totalPage;
       var content = '';
       for (var i = 0; i < listCustomerProduct.length; i++) {
@@ -24,8 +24,6 @@ function loadCustomerProduct(page, limit) {
           content += '<td>' + listCustomerProduct[i].cEmail + '</td>';
           content += '<td>' + listCustomerProduct[i].cName + '</td>';
           content += '<td>' + listCustomerProduct[i].cPhone + '</td>';
-          content += '<td>' + listCustomerProduct[i]._id + '</td>';
-          content += '<td>' + listCustomerProduct[i].totalPrice + '</td>';
           content += '<td>' + '<a href="#" onclick="deleteCustomer(\'' + id + '\')" class="btn btn-danger">Delete</a>';
           content += '</td>';
         content += '</tr>';
