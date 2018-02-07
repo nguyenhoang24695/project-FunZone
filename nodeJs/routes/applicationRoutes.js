@@ -27,8 +27,8 @@ module.exports = function (app) {
 
 	// order API
 	app.route('/_api/v1/order')
-		.get(orderController.getAllList);
-
+		.get(orderController.getAllList)
+		.put(orderController.update);
 	app.route('/_api/v1/order/:status')
 		.get(orderController.getList)
 		.delete(orderController.delete);

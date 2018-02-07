@@ -52,3 +52,14 @@ exports.delete = function(req, resp){
 		});
 	});	
 }
+exports.update = function(req, resp){	
+	order.findById(req.query.id,function(err, result){				
+		result.status = 1;
+		console.log(result)
+		order.findOneAndUpdate({_id: req.query.id}, result, {new: true}, function(err, result) {
+			console.log(result);
+		    result.updatedAt = Date.now();
+		    resp.json(result);
+		});
+	});	
+}
