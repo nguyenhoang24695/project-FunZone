@@ -4,6 +4,7 @@ $(document).ready(function () {
   var page = Number(getUrlParameter('page'));
   var limit = Number(getUrlParameter('limit'));
   loadCustomerProduct(page, limit);
+  $('.allProduct').click(loadCustomerProduct(page, limit));
   // $('body').on('click', '.delete-link', function(event){
   //    alert(JSON.stringify(event.target));
   //    return false;
@@ -21,24 +22,64 @@ function loadCustomerProduct(page, limit) {
       for (var i = 0; i < listCustomerProduct.length; i++) {
         var id = listCustomerProduct[i]._id;
         var status = listCustomerProduct[i].status;
-        if (status == 1) {
-          status = "Đã xác nhận"
-        } else if (status == 0) {
-          status = "Đã hủy"
+        if (status == 0 || status == 2) {
+          if (status == 2) {
+            status = "Đang xác nhận";
+            content += '<tr class="line">';
+            content += '<td>' + listCustomerProduct[i].email + '</td>';
+            content += '<td>' + listCustomerProduct[i].name + '</td>';
+            content += '<td>' + listCustomerProduct[i].phone + '</td>';
+            content += '<td>' + listCustomerProduct[i]._id + '</td>';
+            content += '<td>' + listCustomerProduct[i].totalPrice + '</td>';
+            content += '<td>' + status + '</td>';
+            content += '<td>' + '<a href="#" onclick="confirmProduct(\'' + listCustomerProduct[i]._id + ',' + status  + '\')" class="btn btn-info">Xác nhận</a></td>';
+            content += '<td>' + '<a href="#" onclick="deleteProduct(\'' + listCustomerProduct[i]._id + '\')" class="btn btn-danger">Xóa</a></td>';
+            content += '</tr>';
+          } else if (status == 0) {
+            status = "Đã hủy";
+            content += '<tr class="line">';
+            content += '<td>' + listCustomerProduct[i].email + '</td>';
+            content += '<td>' + listCustomerProduct[i].name + '</td>';
+            content += '<td>' + listCustomerProduct[i].phone + '</td>';
+            content += '<td>' + listCustomerProduct[i]._id + '</td>';
+            content += '<td>' + listCustomerProduct[i].totalPrice + '</td>';
+            content += '<td>' + status + '</td>';
+            content += '<td></td>';
+            content += '<td>' + '<a href="#" onclick="deleteProduct(\'' + listCustomerProduct[i]._id + '\')" class="btn btn-danger">Xóa</a></td>';
+            content += '</tr>';
+          };
+        } else if (status == 1) {
+          status = "Đã xác nhận";
+          content += '<tr class="line">';
+          content += '<td>' + listCustomerProduct[i].email + '</td>';
+          content += '<td>' + listCustomerProduct[i].name + '</td>';
+          content += '<td>' + listCustomerProduct[i].phone + '</td>';
+          content += '<td>' + listCustomerProduct[i]._id + '</td>';
+          content += '<td>' + listCustomerProduct[i].totalPrice + '</td>';
+          content += '<td>' + status + '</td>';
+          content += '<td>' + '</td>';
+          content += '<td>' + '<a href="#" onclick="deleteProduct(\'' + listCustomerProduct[i]._id + '\')" class="btn btn-danger">Xóa</a></td>';
+          content += '</tr>';
         }
-        else if (status == 2) {
-          status = "Đang xác nhận"
-        }
-        content += '<tr class="line">';
-        content += '<td>' + listCustomerProduct[i].email + '</td>';
-        content += '<td>' + listCustomerProduct[i].name + '</td>';
-        content += '<td>' + listCustomerProduct[i].phone + '</td>';
-        content += '<td>' + listCustomerProduct[i]._id + '</td>';
-        content += '<td>' + listCustomerProduct[i].totalPrice + '</td>';
-        content += '<td>' + status + '</td>';
-        content += '<td>' + '<a href="#" onclick="deleteCustomer(\'' + id + '\')" class="btn btn-danger">Delete</a>';
-        content += '</td>';
-        content += '</tr>';
+        // if (status == 1) {
+        //   status = "Đã xác nhận"
+        // } else if (status == 0) {
+        //   status = "Đã hủy"
+        // }
+        // else if (status == 2) {
+        //   status = "Đang xác nhận"
+        // }
+        // content += '<tr class="line">';
+        // content += '<td>' + listCustomerProduct[i].email + '</td>';
+        // content += '<td>' + listCustomerProduct[i].name + '</td>';
+        // content += '<td>' + listCustomerProduct[i].phone + '</td>';
+        // content += '<td>' + listCustomerProduct[i]._id + '</td>';
+        // content += '<td>' + listCustomerProduct[i].totalPrice + '</td>';
+        // content += '<td>' + status + '</td>';
+        // content += '<td>' + '<a href="#" onclick="deleteCustomer(\'' + id + '\')" class="btn btn-info">Xác nhận</a>';
+        // content += '<td>' + '<a href="#" onclick="deleteCustomer(\'' + id + '\')" class="btn btn-danger">Xóa</a>';
+        // content += '</td>';
+        // content += '</tr>';
 
       }
 
@@ -75,9 +116,22 @@ function loadCustomerProduct(page, limit) {
 }
 
 
+function confirmProduct(id, status){
+  $.ajax({
+    url: ORDER_API + '/' + id,
+    type: 'PUT',
+    success: function (response) {
+      location.reload();
+    },
+    error: function (response, message) {
+      alert('Có lỗi xảy ra. Không thay đổi được nội dung. ' + message);
+    }
+  });
+}
 
-function deleteCustomer(id) {
-  if (confirm('Có chắc muốn xóa nội dung này?')) {
+
+function deleteProduct(id) {
+  if (confirm('Có chắc muốn xóa sản phẩm này?')) {
     $.ajax({
       url: ORDER_API + '/' + id,
       type: 'DELETE',
@@ -91,6 +145,98 @@ function deleteCustomer(id) {
     });
   }
 }
+
+
+$('.confirmed').click(function(){
+  $.ajax({
+    url: ORDER_API + '/' + '1',
+    type: 'GET',
+    success: function(response){
+      var listCustomerProduct = response;
+      var content = '';
+      console.log(listCustomerProduct);
+
+      for (var i = 0; i < listCustomerProduct.length; i++) {  
+        status = "Đã xác nhận";
+        content += '<tr class="line">';
+        content += '<td>' + listCustomerProduct[i].email + '</td>';
+        content += '<td>' + listCustomerProduct[i].name + '</td>';
+        content += '<td>' + listCustomerProduct[i].phone + '</td>';
+        content += '<td>' + listCustomerProduct[i]._id + '</td>';
+        content += '<td>' + listCustomerProduct[i].totalPrice + '</td>';
+        content += '<td>' + status + '</td>';
+        content += '<td></td>';
+        content += '<td>' + '<a href="#" onclick="deleteProduct(\'' + listCustomerProduct[i]._id + '\')" class="btn btn-danger">Xóa</a></td>';
+        content += '</tr>';
+      }
+      $('#result').html(content);       
+    },
+    error: function(response, message){
+      alert('Có lỗi xảy ra. Vui lòng thử lại.');
+    }
+  });
+});
+
+$('.confirm').click(function(){
+  $.ajax({
+    url: ORDER_API + '/' + '2',
+    type: 'GET',
+    success: function(response){
+      var listCustomerProduct = response;
+      var content = '';
+      console.log(listCustomerProduct);
+
+      for (var i = 0; i < listCustomerProduct.length; i++) {
+        status = "Đang xác nhận";
+        content += '<tr class="line">';
+        content += '<td>' + listCustomerProduct[i].email + '</td>';
+        content += '<td>' + listCustomerProduct[i].name + '</td>';
+        content += '<td>' + listCustomerProduct[i].phone + '</td>';
+        content += '<td>' + listCustomerProduct[i]._id + '</td>';
+        content += '<td>' + listCustomerProduct[i].totalPrice + '</td>';
+        content += '<td>' + status + '</td>';
+        content += '<td>' + '<a href="#" onclick="confirmProduct(\'' + listCustomerProduct[i]._id + '\')" class="btn btn-info">Xác nhận</a></td>';
+        content += '<td>' + '<a href="#" onclick="deleteProduct(\'' + listCustomerProduct[i]._id + '\')" class="btn btn-danger">Xóa</a></td>';
+        content += '</tr>';
+      }
+      $('#result').html(content);       
+    },
+    error: function(response, message){
+      alert('Có lỗi xảy ra. Vui lòng thử lại.');
+    }
+  });
+});
+
+$('.cancel').click(function(){
+  $.ajax({
+    url: ORDER_API + '/' + '0',
+    type: 'GET',
+    success: function(response){
+      var listCustomerProduct = response;
+      var content = '';
+      console.log(listCustomerProduct);
+
+      for (var i = 0; i < listCustomerProduct.length; i++) { 
+        status = "Đã hủy";
+        content += '<tr class="line">';
+        content += '<td>' + listCustomerProduct[i].email + '</td>';
+        content += '<td>' + listCustomerProduct[i].name + '</td>';
+        content += '<td>' + listCustomerProduct[i].phone + '</td>';
+        content += '<td>' + listCustomerProduct[i]._id + '</td>';
+        content += '<td>' + listCustomerProduct[i].totalPrice + '</td>';
+        content += '<td>' + status + '</td>';
+        content += '<td></td>';
+        content += '<td>' + '<a href="#" onclick="deleteProduct(\'' + listCustomerProduct[i]._id + '\')" class="btn btn-danger">Xóa</a></td>';
+        content += '</tr>';
+      }
+      $('#result').html(content);       
+    },
+    error: function(response, message){
+      alert('Có lỗi xảy ra. Vui lòng thử lại.');
+    }
+  });
+});
+
 
 // Lấy tham số truyền lên trong url theo tên.
 function getUrlParameter(sParam) {
