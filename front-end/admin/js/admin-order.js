@@ -1,4 +1,4 @@
-ORDER_API = "http://localhost:3000/_api/v1/cart";
+ORDER_API = "http://localhost:3000/_api/v1/order";
 
 $(document).ready(function () {
   var page = Number(getUrlParameter('page'));
@@ -15,20 +15,31 @@ function loadCustomerProduct(page, limit) {
     url: ORDER_API + '?page=' + page + '&limit=' + limit,
     type: 'GET',
     success: function (response) {
-      var listCustomerProduct = response.list;
+      var listCustomerProduct = response.listCustomer;
       var totalPage = response.totalPage;
       var content = '';
       for (var i = 0; i < listCustomerProduct.length; i++) {
         var id = listCustomerProduct[i]._id;
-        content += '<tr>';
-          content += '<td>' + listCustomerProduct[i].cEmail + '</td>';
-          content += '<td>' + listCustomerProduct[i].cName + '</td>';
-          content += '<td>' + listCustomerProduct[i].cPhone + '</td>';
-          content += '<td>' + listCustomerProduct[i]._id + '</td>';
-          content += '<td>' + listCustomerProduct[i].totalPrice + '</td>';
-          content += '<td>' + '<a href="#" onclick="deleteCustomer(\'' + id + '\')" class="btn btn-danger">Delete</a>';
-          content += '</td>';
+        var status = listCustomerProduct[i].status;
+        if (status == 1) {
+          status = "Đã xác nhận"
+        } else if (status == 0) {
+          status = "Đã hủy"
+        }
+        else if (status == 2) {
+          status = "Đang xác nhận"
+        }
+        content += '<tr class="line">';
+        content += '<td>' + listCustomerProduct[i].email + '</td>';
+        content += '<td>' + listCustomerProduct[i].name + '</td>';
+        content += '<td>' + listCustomerProduct[i].phone + '</td>';
+        content += '<td>' + listCustomerProduct[i]._id + '</td>';
+        content += '<td>' + listCustomerProduct[i].totalPrice + '</td>';
+        content += '<td>' + status + '</td>';
+        content += '<td>' + '<a href="#" onclick="deleteCustomer(\'' + id + '\')" class="btn btn-danger">Delete</a>';
+        content += '</td>';
         content += '</tr>';
+
       }
 
       var paginateContent = '';
