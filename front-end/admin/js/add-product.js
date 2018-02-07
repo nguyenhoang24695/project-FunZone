@@ -81,7 +81,6 @@ $(document).ready(function(){
 			url: PRODUCT_API +"/"+ id,
 			type:"GET",
 			success:function(response){
-				console.log(response);
 				$("[name='pName']").val(response.pName);
 				$("[name='pId']").val(response.pId);
 				$("[name='pId']").attr('disabled',true);
@@ -92,7 +91,8 @@ $(document).ready(function(){
 				// $("[name='pCategory']").attr('checked', response.pCategory);
 				$("[name='pType']").attr('checked', response.pType);
 				$("[name='status']").attr('checked', response.status);
-				$("[name='pImage']").val(response.pImage);
+				console.log(response.pImage);
+				$("#preview").attr('src', response.pImage);
 				// pCategory = response.pCategory;
 				// pType = response.pType;
 				// status = response.status;
