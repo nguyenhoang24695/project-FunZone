@@ -87,7 +87,7 @@
             </a>
             <ul class="treeview-menu">
               <li>
-                <a href="admin-list-product.html">
+                <a href="admin-list-product.html?page=1&limit=5">
                   <i class="fa fa-circle-o"></i>Danh sách sản phẩm</a>
               </li>
               <li>
@@ -106,11 +106,11 @@
             </a>
             <ul class="treeview-menu">
               <li>
-                <a href="admin-customer-contact.html">
+                <a href="admin-customer-contact.html?page=1&limit=5">
                   <i class="fa fa-circle-o"></i>Danh sách khách hàng liên hệ</a>
               </li>
               <li>
-                <a href="admin-customer-product.html">
+                <a href="admin-customer-product.html?page=1&limit=5">
                   <i class="fa fa-circle-o"></i>Danh sách khách hàng đặt order</a>
               </li>
             </ul>
@@ -125,7 +125,7 @@
             </a>
             <ul class="treeview-menu">
               <li>
-                <a href="admin-order.html">
+                <a href="admin-order.html?page=1&limit=5">
                   <i class="fa fa-circle-o"></i>Danh sách Order</a>
               </li>
             </ul>
@@ -166,39 +166,47 @@
               </div>
               <!-- /.box-header -->
               <!-- form start -->
-              <form role="form" name="admin-add-product-form">
+              <form role="form" id="admin-add-product-form">
                 <div class="box-body">
                   <div class="form-group">
                     <label>Tên Sản Phẩm</label>
                     <input type="text" class="form-control" placeholder="Điền tên sản phẩm" name="pName">
+                    <span></span>
+                  </div>
+                  <div class="form-group">
+                    <label>Mã Sản Phẩm</label>
+                    <input type="text" class="form-control" placeholder="Điền mã sản phẩm" name="pId">
+                    <span></span>
                   </div>
                   <div class="form-group">
                     <label>Giá</label>
                     <input type="number" class="form-control" placeholder="Điền giá" name="pPrice">
+                    <span></span>
                   </div>
                   <div class="form-group">
                     <label>Mô tả</label>
                     <input type="text" class="form-control" placeholder="Thêm mô tả" name="pDescription">
+                    <span></span>
                   </div>
                   <div class="form-group">
                     <label>Danh mục</label>
                     <div class="radio">
                       <label>
-                        <input type="radio" name="pCategory" value="Hotel" checked> Hotel
+                        <input type="radio" name="pCategory" value="Hotel" id= "pCategory01"> Hotel
                       </label>
                       <label>
-                        <input type="radio" name="pCategory" value="Gate"> Gate
+                        <input type="radio" name="pCategory" value="Gate" id= "pCategory02"> Gate
                       </label>
                       <label>
-                        <input type="radio" name="pCategory" value="Restaurant"> Restaurant
+                        <input type="radio" name="pCategory" value="Restaurant" id= "pCategory03"> Restaurant
                       </label>
                     </div>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group" id="pTypeBlock" style="display: none;">
                     <label>Loại</label>
                     <div class="radio">
                       <label>
-                        <input type="radio" name="pType" value="true" checked> Người lớn
+                        <input type="radio" name="pType" value="true"> Người lớn
                       </label>
                       <label>
                         <input type="radio" name="pType" value="false"> Trẻ em
@@ -218,7 +226,8 @@
                   </div>
                   <div class="form-group">
                     <label>Ảnh Sản Phẩm</label>
-                    <input type="file" id="pImage" onchange="readURL(this);">
+                    <input type="file" id="pImage">
+                    <span></span>
                     <img id="preview" src="#" style="max-width: 200px; padding: 5px;">
                     <input type="hidden" name="avatarUrl">
                   </div>

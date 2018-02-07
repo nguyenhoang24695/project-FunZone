@@ -1,4 +1,5 @@
 product_API = "http://localhost:3000/_api/v1/adminProducts";
+
 $(document).ready(function () {
   var page = Number(getUrlParameter('page'));
   var limit = Number(getUrlParameter('limit'));
@@ -14,6 +15,7 @@ function loadProduct(page, limit) {
     url: product_API + '?page=' + page + '&limit=' + limit,
     type: 'GET',
     success: function (response) {
+      console.log(response);
       var listProduct = response.list;
       var totalPage = response.totalPage;
       var content = '';
@@ -32,7 +34,7 @@ function loadProduct(page, limit) {
             status = "Dừng bán"
         }
         content += '<tr>';
-          content += '<td>' + listProduct[i].pName + '</td>';
+          content += '<td><a href="admin-add-product.html?id=' + listProduct[i]._id + '">' + listProduct[i].pName + '</a></td>';
           content += '<td>' + listProduct[i].pId + '</td>';
           content += '<td>' + listProduct[i].pPrice + '</td>';
           content += '<td>' + listProduct[i].pDescription + '</td>';

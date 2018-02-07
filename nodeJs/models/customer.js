@@ -5,16 +5,16 @@ module.exports = mongoose.model('customers', {
 	cId: Schema.Types.ObjectId,
 	cName: {
 		type: String,
-		required: true
+		required: [true,'Name bị thiếu']
 	},
 	cPhone: {
 		type: String,
-		required: true,
+		required: [true,'Phone bị thiếu'],
 		unique: true
 	},
 	cEmail: {
 		type: String,
-		required: true
+		required: [true,'Email bị thiếu']
 	},
 	createdAt: {
 		type: Date,
@@ -26,6 +26,6 @@ module.exports = mongoose.model('customers', {
 	},
 	status: {
 		type: Number,
-		default: 0
+		default: 1
 	}
 });

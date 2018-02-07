@@ -14,7 +14,9 @@
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "mongoose": "^5.0.1",
-    "mongoose-transactions": "^1.1.0",
+    "mongoose-pagination": "^1.0.0",
+	"mongoose-transaction": "0.0.3",
+	"express-fileupload": "^0.4.0",
     "nodemon": "^1.14.11"
   }
 }

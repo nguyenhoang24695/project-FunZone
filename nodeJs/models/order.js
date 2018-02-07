@@ -1,13 +1,23 @@
 var mongoose = require('mongoose');
-
-module.exports = mongoose.model('orders', {	
-	customerId: {
+var Schema = mongoose.Schema;
+module.exports = mongoose.model('orders', {
+	
+	name: {
 		type: String,
-		unique: true
+		require: [true,'Chưa nhập tên'],
+		min:3
 	},
 	totalPrice: Number,
-	phone: String,
-	email: String,
+	phone: {
+		type: String,
+		require: [true,'Chưa nhập phone'],
+		min: 3
+	},
+	email: {
+		type: String,
+		require: [true,'Chưa nhập email'],
+		min: 3
+	},
 	createdAt: {
 		type: Date,
 		default: Date.now
