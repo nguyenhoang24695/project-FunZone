@@ -1,32 +1,21 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-module.exports = mongoose.model('products', {
-	pId: {
+module.exports = mongoose.model('customers', {
+	cId: Schema.Types.ObjectId,
+	cName: {
 		type: String,
+		required: true
+	},
+	cPhone: {
+		type: String,
+		required: true,
 		unique: true
 	},
-	pName: {
+	cEmail: {
 		type: String,
 		required: true
 	},
-	pDescription: {
-		type: String,
-		required: true
-	},
-	pImage: {
-		type: String,
-		required: true
-	},
-	pCategory: {
-		type: String,
-		required: true
-	},
-	pPrice: {
-		type: Number,
-		required: true
-	},
-	pType: Boolean, //true với người lớn, false với trẻ em
 	createdAt: {
 		type: Date,
 		default: Date.now
