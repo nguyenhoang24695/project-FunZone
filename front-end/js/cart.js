@@ -121,11 +121,54 @@ function addToCart(productId, productCode, productName, productPrice, quantity) 
   // Lưu lại thông tin giỏ hàng vào localStorage.
   localStorage.setItem('cart', JSON.stringify(cart));
 }
+  
+
+var cName = $('[name="cName"]').val();
+var cPhone = $('[name="cPhone"]').val();
+var cEmail = $('[name="cEmail"]').val();
+
+var isValidcName = false;
+var isValidcPhone = false;
+var isValidcEmail = false;
+
+function checkIsValidcName(){
+  if(cName == undefined || cName == null || cName.length == 0 || cName.length > 25 || cName.length < 7){
+    isValidcName = false;
+    $("[name='cName']").next().addClass("text-danger").removeClass("text-success");
+    $("[name='cName']").next().text("Tên khách hàng phải lớn hơn 7 kí tự và nhỏ hơn 25 kí tự.");
+  } else {
+    $("[name='cName']").next().addClass("text-success").removeClass("text-danger");
+    $("[name='cName']").next().text("Tên khách hàng hợp lệ.");
+    isValidcName = true;
+  }
+};
+
+function checkIsValidcPhone(){
+  if(cPhone == undefined || cPhone == null || cPhone.length == 0 || pName.length > 15 || pName.length < 10){
+    isValidcPhone = false;
+    $("[name='cPhone']").next().addClass("text-danger").removeClass("text-success");
+    $("[name='cPhone']").next().text("Số điện thoại không hợp lệ.");
+  } else {
+    $("[name='cPhone']").next().addClass("text-success").removeClass("text-danger");
+    $("[name='cPhone']").next().text("Số điện thoại hợp lệ.");
+    isValidcPhone = true;
+  }
+};
+
+function checkIsValidcEmail(){
+  if(cEmail == undefined || cEmail == null || cEmail.length == 0 || cEmail.length > 50 || cEmail.length < 10){
+    isValidcEmail = false;
+    $("[name='cEmail']").next().addClass("text-danger").removeClass("text-success");
+    $("[name='cEmail']").next().text("Email không hợp lệ.");
+  } else {
+    $("[name='cEmail']").next().addClass("text-success").removeClass("text-danger");
+    $("[name='cEmail']").next().text("Email hợp lệ.");
+    isValidcEmail = true;
+  }
+}
 
 function addCustomer(){
-  var cName = $('[name="cName"]').val();
-  var cPhone = $('[name="cPhone"]').val();
-  var cEmail = $('[name="cEmail"]').val();
+
   var contact = {
     'cName': cName,
     'cPhone': cPhone,
@@ -147,6 +190,10 @@ function addCustomer(){
 }
 
 function submitCart() {
+  checkIsValidcName();
+  checkIsValidcPhone();
+  checkIsValidcEmail();
+  
   var cart = localStorage.getItem('cart');
   cart = JSON.parse(cart);
 
@@ -162,7 +209,7 @@ function submitCart() {
     $.ajax({
       url: "http://localhost:3000/_api/v1/cart",
       type: 'POST',
-      data: data,
+      data: product,
       success: function (response) {
         alert("");
         // localStorage.removeItem('cart');
@@ -171,11 +218,11 @@ function submitCart() {
         alert('Có lỗi xảy ra ' + message);
       }
     });
-    
   }
+
   var data = {
 		'products': JSON.stringify(arrayProducts)
-	}	
+	}
   var api_url = "http://localhost:3000/_api/v1/cart";
   var method = 'POST';
 
@@ -194,8 +241,7 @@ function submitCart() {
   });
 }
 
-$('.btnSubmit').click(function() {
+$('.btnSubmit').click(function(){
   submitCart();
   addCustomer();
 });
-
