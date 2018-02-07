@@ -34,7 +34,7 @@ module.exports = function (app) {
 		.delete(orderController.delete);
 	app.route('/_api/v1/order/d/:id')
 		.get(orderController.getDetail)
-		.delete(orderController.delete);
+
 
 	// admin customer contact api
 	app.route('/_api/v1/cContact')

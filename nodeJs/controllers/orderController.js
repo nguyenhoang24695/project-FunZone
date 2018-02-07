@@ -38,26 +38,22 @@ exports.getDetail = function(req, resp){
   	});
 }
 
-exports.delete = function(req, resp){
-	// Customer.remove({
-	//     _id: req.params.id
- 	//    }, function(err, result) {
-	//     resp.json({ message: 'Successfully deleted' });
-	// });
-	order.findById(req.params.id,function(err, result){				
-		result.status = 0;
-		order.findOneAndUpdate({_id: req.params.id}, result, {new: true}, function(err, result) {
-		    result.updatedAt = Date.now();
-		    resp.json(result);
-		});
-	});	
-}
+
 exports.update = function(req, resp){	
 	order.findById(req.query.id,function(err, result){				
 		result.status = 1;
 		console.log(result)
 		order.findOneAndUpdate({_id: req.query.id}, result, {new: true}, function(err, result) {
 			console.log(result);
+		    result.updatedAt = Date.now();
+		    resp.json(result);
+		});
+	});	
+}
+exports.delete = function(req, resp){	
+	order.findById(req.query.id,function(err, result){				
+		result.status = 0;
+		order.findOneAndUpdate({_id: req.query.id}, result, {new: true}, function(err, result) {
 		    result.updatedAt = Date.now();
 		    resp.json(result);
 		});
