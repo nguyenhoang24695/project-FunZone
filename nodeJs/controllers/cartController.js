@@ -4,6 +4,7 @@ var Order = require('../models/order');
 var OrderDetail = require('../models/orderDetail');
 const Transaction = require('mongoose-transaction')(mongoose); // phải chạy 
 // lệnh npm install mongoose-transaction --save
+var Schema = mongoose.Schema;
 
 exports.saveCart = function (req, resp) {
 	var listOrderProducts = JSON.parse(req.body.products);
@@ -38,10 +39,11 @@ exports.saveCart = function (req, resp) {
 				status: 2
 			});
 			// Tạo mảng order detail.
+			console.log('-----------------------------------------------------------------');
 			for (var i = 0; i < productResult.length; i++) {
 				var orderDetail = new OrderDetail({
 					orderId: order._id,
-					pId: productResult[i].pId,
+					pId: productResult[i]._id,
 					quantity: mapProduct[listOrderProducts[i].pID],
 					unitPrice: productResult[i].pPrice
 				});
@@ -49,28 +51,37 @@ exports.saveCart = function (req, resp) {
 				orderDetailArray.push(orderDetail);
 				// Tính toán tổng giá đơn hàng.
 				totalPrice += orderDetail.quantity * orderDetail.unitPrice;
+				
 				console.log('Tong gia: ' + totalPrice)
 				console.log('don gia gia: ' + orderDetail.unitPrice)
 				console.log('So luong gia: ' + orderDetail.quantity)
 			}
-			console.log(orderDetail)
+			
 			// Set tổng giá cho order.
 			order.totalPrice = totalPrice;
 
 			// Tiến hành lưu vào database với transaction, đảm bảo tất cả đều thành công.
 			var transaction = new Transaction();
 			// Lưu order
-			transaction.insert('orders', order);
+			
 			// Lưu danh sách order detail.
-			orderDetailArray.forEach(function (orderDetail) {
-				transaction.insert('orderDetail', orderDetail);
-			});
+			// orderDetailArray.forEach(function (orderDetail) {
+			// 	transaction.insert('orderDetail', orderDetail);
+			// });
+			for(var i = 0;i<orderDetailArray.length;i++){
+				transaction.insert('orderDetail', orderDetailArray[i])
+			}
+			transaction.insert('orders', order);
+			console.log(orderDetail);
+			console.log(order);
+			console.log('-----------------------------------------------------------------');
 			// Kết thúc transaction.
+			
 			transaction.run(function (err, docs) {
 				if (err) {
 					resp.status(400).send(err)
 				} else {
-					resp.status(200).send(docs)
+					resp.status(200).send(docs)				
 				}
 			});
 		}

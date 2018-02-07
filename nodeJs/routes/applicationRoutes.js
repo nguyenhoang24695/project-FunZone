@@ -4,7 +4,7 @@ var productController = require('../controllers/productController');
 var cartController = require('../controllers/cartController');
 var ccController = require('../controllers/customer-contactController');
 var orderController = require('../controllers/orderController');
-module.exports = function(app){
+module.exports = function (app) {
 	// customer api.
 	app.route('/_api/v1/customers')
 		.get(customerController.getList)
@@ -27,26 +27,28 @@ module.exports = function(app){
 
 	// order API
 	app.route('/_api/v1/order')
-    	.post(orderController.add)
 		.get(orderController.getAllList);
 
-  	app.route('/_api/v1/order/:status')
-	    .get(orderController.getList)
-	    .delete(orderController.delete);
+	app.route('/_api/v1/order/:status')
+		.get(orderController.getList)
+		.delete(orderController.delete);
+	app.route('/_api/v1/order/d/:id')
+		.get(orderController.getDetail)
+		.delete(orderController.delete);
 
 	// admin customer contact api
 	app.route('/_api/v1/cContact')
-    	.post(ccController.add)
+		.post(ccController.add)
 		.get(ccController.getList);
 
-  	app.route('/_api/v1/cContact/:id')
-	    .get(ccController.getDetail)
-	    .delete(ccController.delete);
-    
+	app.route('/_api/v1/cContact/:id')
+		.get(ccController.getDetail)
+		.delete(ccController.delete);
+
 	// products api.
 	app.route('/_api/v1/products')
 		.get(productController.getList)
-		.post(productController.add);	
+		.post(productController.add);
 
 	// app.route('/_api/v1/products?category=:')
 	// 	.get(productController.getListCategory);
@@ -54,12 +56,12 @@ module.exports = function(app){
 	app.route('/_api/v1/products/:id')
 		.get(productController.getDetail)
 		.put(productController.update)
-		.delete(productController.delete);	
+		.delete(productController.delete);
 
 	// cart/order api
 	app.route('/_api/v1/cart')
 		.post(cartController.saveCart)
-		// .get(cartController.getOrder);
+	// .get(cartController.getOrder);
 
 	// app.route('/_api/v1/cart/:id')
 	// 	.delete(cartController.deleteOrder)
@@ -70,20 +72,20 @@ module.exports = function(app){
 		.get(productController.getAllList);
 
 	// image api.	
-	app.post('/_api/v1/images', function(req, res) {		
+	app.post('/_api/v1/images', function (req, res) {
 		console.log(req.files);
 		if (!req.files)
 			return res.status(400).send('No files were uploaded.');
 
 		// The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-		let sampleFile = req.files.myFile;	
+		let sampleFile = req.files.myFile;
 
 		// Use the mv() method to place the file somewhere on your server
-		sampleFile.mv('./public/images/' + sampleFile.name, function(err) {
+		sampleFile.mv('./public/images/' + sampleFile.name, function (err) {
 			if (err)
-			  return res.status(500).send(err);
+				return res.status(500).send(err);
 
 			res.send('http://localhost:3000/images/' + sampleFile.name);
 		});
-	});	
+	});
 }

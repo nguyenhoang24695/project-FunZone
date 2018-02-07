@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
-
-module.exports = mongoose.model('orders', {	
+var Schema = mongoose.Schema;
+module.exports = mongoose.model('orders', {
+	
 	name: {
 		type: String,
 		require: [true,'Chưa nhập tên']
