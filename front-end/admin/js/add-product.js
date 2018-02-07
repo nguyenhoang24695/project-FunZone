@@ -70,6 +70,10 @@ $(document).ready(function(){
 			isValidProductDescription=true;
 		}
 	}
+
+	if(getUrlParameter('id') != null || getUrlParameter('id') != undefined){
+		getInfo(getUrlParameter('id'));
+	}
 	
 	// Lấy thông tin sản phẩm ra
 	function getInfo(id){
@@ -77,22 +81,29 @@ $(document).ready(function(){
 			url: PRODUCT_API +"/"+ id,
 			type:"GET",
 			success:function(response){
-				pName = response.pName;
-				pId = response.pId;
+				console.log(response);
+				$("[name='pName']").val(response.pName);
+				$("[name='pId']").val(response.pId);
 				$("[name='pId']").attr('disabled',true);
-				pPrice = response.pPrice;
-				pDescription = response.pDescription;
+				$("[name='pPrice']").val(response.pPrice);
+				$("[name='pDescription']").val(response.pDescription);
 				// radio button value in ra hơi khó
-				pCategory = response.pCategory;
-				pType = response.pType;
-				status = response.status;
-				pImage = response.pImage;
+				$('[name="pCategory"]:checked').val(response.pCategory);
+				// $("[name='pCategory']").attr('checked', response.pCategory);
+				$("[name='pType']").attr('checked', response.pType);
+				$("[name='status']").attr('checked', response.status);
+				$("[name='pImage']").val(response.pImage);
+				// pCategory = response.pCategory;
+				// pType = response.pType;
+				// status = response.status;
+				// pImage = response.pImage;
 			},
 			error: function(response, message){
 				alert('Có lỗi xảy ra. Không nhận được dữ liệu sản phẩm này. ' + message);
 			}
 		});
 	}
+
 	// Thêm sản phẩm mới
 	function addProduct(){
 
@@ -184,6 +195,7 @@ $(document).ready(function(){
 					$('#modal-success').modal();
 					$('#admin-add-product-form').trigger("reset");
 					$(".form-group span").text("");
+					window.location.href = 'admin-list-product.html';
 				},
 				error: function(response, message){
 					alert('Có lỗi xảy ra. Không cập nhật được sản phẩm. ' + message);
@@ -236,6 +248,7 @@ $(document).ready(function(){
 		});
 	});
 });
+
 // Lấy file ảnh ra cho vào preview
 // function readURL(input) {
 // 	if (input.files && input.files[0]) {
@@ -248,3 +261,19 @@ $(document).ready(function(){
 // 	  reader.readAsDataURL(input.files[0]);
 // 	}
 //   }
+
+// Lấy tham số truyền lên trong url theo tên.
+function getUrlParameter(sParam) {
+  var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+    sURLVariables = sPageURL.split('&'),
+    sParameterName,
+    i;
+
+  for (i = 0; i < sURLVariables.length; i++) {
+    sParameterName = sURLVariables[i].split('=');
+
+    if (sParameterName[0] === sParam) {
+      return sParameterName[1] === undefined ? true : sParameterName[1];
+    }
+  }
+};
