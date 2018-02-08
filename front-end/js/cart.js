@@ -210,9 +210,9 @@ function submitCart() {
     type: method,
     data: data,
     success: function (response) {
-      alert("Đặt vé thành công.");
-      // window.location.href = "ticketlist.html"
-      // localStorage.removeItem('cart');
+      alert("Đặt vé thành công. Chúng tôi sẽ liên hệ với bạn sớm nhất để tư vấn cho bạn.");
+      window.location.href = "ticketlist.html"
+      localStorage.removeItem('cart');
     },
     error: function (response, message) {
       console.log(response);
